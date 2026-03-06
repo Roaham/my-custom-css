@@ -1,0 +1,36 @@
+/* APLICACIÓN AL ÍTEM DE LISTA (FILA DE CANCIÓN) */
+ytmusic-responsive-list-item-renderer {
+    border-radius: 0px !important;
+    background-color: var(--bg-dark) !important;
+    border-left: 0px solid var(--accent) !important;
+    color: var(--text-main) !important;
+    transition: border-width 0.1s steps(4), background-color 0.1s !important;
+    margin-bottom: 1px !important; /* Separación mínima estilo terminal */
+}
+
+/* EFECTO AL PASAR EL RATÓN (HOVER) */
+ytmusic-responsive-list-item-renderer:hover {
+    background-color: var(--bg-surface) !important;
+    border-left: 8px solid var(--accent) !important;
+}
+
+/* CUANDO LA CANCIÓN ESTÁ SELECCIONADA O SONANDO */
+ytmusic-responsive-list-item-renderer[active],
+ytmusic-responsive-list-item-renderer[play-button-state="playing"],
+ytmusic-responsive-list-item-renderer[play-button-state="paused"] {
+    background-color: var(--bg-surface) !important;
+    border-left: 8px solid var(--accent) !important;
+}
+
+/* AJUSTE PARA LOS ELEMENTOS INTERNOS (TEXTOS) */
+ytmusic-responsive-list-item-renderer .title,
+ytmusic-responsive-list-item-renderer .flex-column {
+    font-family: 'JetBrains Mono', monospace !important;
+    color: inherit !important;
+}
+
+/* ELIMINAR BORDES REDONDEADOS DE LA MINIATURA DENTRO DE LA LISTA */
+ytmusic-responsive-list-item-renderer yt-img-shadow,
+ytmusic-responsive-list-item-renderer #img {
+    border-radius: 0px !important;
+}
