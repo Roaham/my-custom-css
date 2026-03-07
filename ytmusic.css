@@ -18,7 +18,7 @@ html:not(.style-scope) {
     --yt-spec-general-background-b: var(--bg-panel) !important;
     --yt-spec-brand-background-solid: var(--bg-dark) !important;
 
-    /* TUI view */
+    /* TUI */
     --yt-spec-badge-chip-background: var(--bg-surface) !important;
     --yt-button-border-radius: 0px !important;
     --ytd-searchbox-border-radius: 0px !important;
