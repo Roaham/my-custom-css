@@ -1,0 +1,295 @@
+html:not(.style-scope) {
+    --bg-main: #1e1e2e;
+    --bg-dark: #11111b;
+    --bg-panel: #181825;
+    --bg-surface: #313244;
+
+    --text-main: #F1F1F2;
+    --accent: #cba6f7;
+    --border-color: #313244;
+
+    /* Font */
+    font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace !important;
+}
+
+/* --- COMPONENTS --- */
+* {
+    scrollbar-width: none !important;
+}
+
+/* Global */
+body {
+    background: var(--bg-main) !important;
+}
+
+span, p, h3, b, code {
+    font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace !important;
+    color: var(--text-main) !important;
+}
+
+b {
+    color: var(--accent) !important;
+}
+
+h3 {
+    color: #b4befe !important;
+}
+
+input-container::before {
+    display: none;
+}
+
+/* lateral bar */
+div.overflow-container {
+    background: var(--bg-panel) !important;
+}
+
+div.input-area.with-toolbox-drawer {
+    background: var(--bg-main) !important;
+    border: none !important;
+}
+
+div.text-input-field.with-toolbox-drawer {
+    background: var(--bg-panel) !important;
+    border-radius: 0px !important;
+    border: 1px solid var(--border-color) !important;
+    transform: scale(0.9);
+    transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease !important;
+    box-shadow: none !important;
+}
+
+div.text-input-field.with-toolbox-drawer:hover {
+    border: 1px solid var(--accent) !important;
+    transform: scale(1.1) !important;
+}
+/* in-line code*/
+div.code-block-decoration {
+    background: var(--bg-panel) !important;
+    border-radius: 0% !important;
+    border: 1px solid var(--border-color) !important;
+    transition: 0.3s !important;
+}
+
+div.formatted-code-block-internal-container {
+    background: var(--bg-panel) !important;
+    border-radius: 0% !important;
+    border: 1px solid var(--border-color) !important;
+    transition: 0.3s !important;
+}
+
+div.code-block-decoration:hover,
+div.formatted-code-block-internal-container:hover {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 10px rgba(203, 166, 247, 0.1) !important;
+}
+
+div.formatted-code-block-internal-container pre, 
+div.formatted-code-block-internal-container code {
+    font-family: 'Fira Code', 'JetBrains Mono', monospace !important;
+    background: transparent !important;
+}
+
+/* code color */
+pre, code, [class*="code-block"], .css-175oi2r {
+    background-color: #1e1e2e !important;
+    color: #cdd6f4 !important;
+}
+
+/* @Service, @Override, @param */
+[class*="annotation"], [class*="decorator"], .na, .atn, .token.annotation {
+    color: #f9e2af !important;
+    font-style: italic !important;
+}
+
+/* Function names, String, boolean, int */
+[class*="class-name"], .nc, .nn, .token.class-name, .token.type, .token.builtin {
+    color: #f9e2af !important;
+}
+
+/* void */
+.token.keyword.primitive, .token.keyword.void {
+    color: #cba6f7 !important;
+}
+
+/* functions */
+[class*="function"], .nf, .fm, .token.function {
+    color: #89b4fa !important; /* Blue */
+    font-style: italic !important;
+}
+
+/* public, class, extends, return, if, new */
+[class*="keyword"], .k, .kd, .kn, .token.keyword {
+    color: #cba6f7 !important; /* Mauve */
+}
+
+[class*="parameter"], .token.parameter, .fn {
+    color: #eba0ac !important; /* Maroon/Flamingo */
+    font-style: italic !important;
+}
+
+/* vars */
+[class*="variable"], .v, .nv, .token.variable, .token.property {
+    color: #f5e0dc !important; /* Rosewater */
+}
+
+/* null, true, false, 0 */
+[class*="constant"], [class*="boolean"], [class*="number"], .kc, .m, .token.boolean, .token.number, .token.constant {
+    color: #fab387 !important; /* Peach */
+}
+
+/* strings "text" */
+[class*="string"], .s, .token.string {
+    color: #a6e3a1 !important; /* Green */
+}
+
+/* comments */
+[class*="comment"], .c, .token.comment {
+    color: #6c7086 !important; /* Overlay 0 */
+    font-style: italic !important;
+}
+
+/* =, ==, &&, !, +, . */
+[class*="operator"], .o, .token.operator {
+    color: #94e2d5 !important; /* Teal */
+}
+
+/* (), {}, [], ; */
+[class*="punctuation"], .p, .token.punctuation {
+    color: #9399b2 !important; /* Overlay 2 */
+}
+
+/* buttons css */
+button {
+    border-radius: 0% !important;
+    border: 1px solid var(--border-color) !important;
+    transition: 0.3s !important;
+}
+
+button:hover {
+    border: 1px solid var(--accent) !important;
+    background: var(--bg-surface);
+}
+
+.mat-mdc-button-persistent-ripple,
+.mat-mdc-button-ripple,
+.mat-mdc-button-touch-target,
+.mat-focus-indicator {
+    display: none !important;
+}
+
+.mat-mdc-icon-button {
+    border: none !important;
+}
+
+.mat-mdc-icon-button:hover {
+    border: none !important;
+    background: var(--bg-surface);
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  from { --angle: 0deg; }
+  to { --angle: 360deg; }
+}
+
+/* sidebar buttons */
+side-nav-action-button a, 
+side-nav-entry-button a {
+    display: flex !important;
+    position: relative !important;
+    width: 230px !important;
+    height: 44px !important;
+    margin: 8px auto !important;
+    
+    background: var(--bg-panel) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 0% !important;
+    color: var(--text-main) !important;
+    z-index: 1;
+}
+
+side-nav-action-button a::before, 
+side-nav-entry-button a::before {
+    content: '';
+    position: absolute;
+    inset: -2px; 
+    padding: 2px; 
+    z-index: -1;
+    
+    background: conic-gradient(from var(--angle), 
+                transparent 70%, 
+                var(--accent), 
+                #fff, 
+                var(--accent));
+    
+    border-radius: 0%;
+    
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    
+    animation: spin 3s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+
+/* new conv button */
+side-nav-action-button[data-test-id="reset-button"] a {
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+    
+    width: 230px !important; 
+    height: 47px !important;
+    top: -20px;
+    
+    background: var(--bg-panel) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 0% !important;
+    color: var(--text-main) !important;
+}
+
+/* new conv button */
+side-nav-action-button[data-test-id="reset-button"] a {
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+    
+    width: 100% !important;
+    max-width: 230px !important; 
+    height: 47px !important;
+    top: -20px;
+    
+    background: var(--bg-panel) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 0% !important;
+    color: var(--text-main) !important;
+    
+    overflow: hidden !important;
+}
+
+side-nav-action-button[data-test-id="reset-button"] a:hover::before {
+    opacity: 1;
+}
+
+side-nav-action-button a:hover::before, 
+side-nav-entry-button a:hover::before {
+    opacity: 1;
+}
+
+/* active the data collection (no please) or suscribe to google fku*/
+div.bard-activity-disabled-message.ng-star-inserted {
+    display: none;
+}
+
+div.buttons-container.adv-upsell.ng-star-inserted {
+    display: none;
+}
+
+/* card container */
