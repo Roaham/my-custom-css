@@ -372,6 +372,7 @@ div.blur-bg.visible-primary-message.blur-shown {
     background: var(--bg-main) !important;
 }
 
+/* a partir de aqui esta roto, xd */
 ul {
     gap: 10px;
 }
