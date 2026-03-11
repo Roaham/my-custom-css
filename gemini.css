@@ -78,7 +78,8 @@ span.user-query-bubble-with-background.ng-star-inserted:hover {
     color: var(--text-color) !important;
 }
 
-div.text-input-field.with-toolbox-drawer:hover {
+div.text-input-field.with-toolbox-drawer:hover,
+div.text-input-field.with-toolbox-drawer:focus-within {
     border: 1px solid var(--accent) !important;
     transform: scale(1.1) !important;
 }
