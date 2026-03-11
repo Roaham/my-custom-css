@@ -39,7 +39,11 @@ input-container::before {
     display: none;
 }
 
-/* lateral bar */
+mat-icon {
+    color: var(--accent) !important;
+}
+
+/* main */
 div.overflow-container {
     background: var(--bg-panel) !important;
 }
@@ -56,6 +60,22 @@ div.text-input-field.with-toolbox-drawer {
     transform: scale(0.9);
     transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease !important;
     box-shadow: none !important;
+}
+
+span.user-query-bubble-with-background.ng-star-inserted {
+    background-color: var(--bg-panel) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 0px !important;
+    transition: 0.3s;
+}
+
+span.user-query-bubble-with-background.ng-star-inserted:hover {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--accent) !important;
+}
+
+.query-text.gds-body-l {
+    color: var(--text-color) !important;
 }
 
 div.text-input-field.with-toolbox-drawer:hover {
@@ -163,6 +183,7 @@ button {
     border-radius: 0% !important;
     border: 1px solid var(--border-color) !important;
     transition: 0.3s !important;
+    background: var(--bg-panel) !important;
 }
 
 button:hover {
@@ -292,4 +313,120 @@ div.buttons-container.adv-upsell.ng-star-inserted {
     display: none;
 }
 
-/* card container */
+/* gems div */
+div[class*="container"][class*="ng-trigger-containerRevealAnimation"] {
+    background-color: var(--bg-main) !important;
+}
+
+template-gallery-card, 
+a.template-gallery-card,
+div.regular-prompt-container.ng-star-inserted{
+    border-radius: 0px !important;
+    border: 1px solid var(--border-color) !important;
+    background-color: var(--bg-panel) !important;
+    transition: all 0.3s ease !important;
+}
+
+template-gallery-card:hover, 
+a.template-gallery-card:hover,
+div.regular-prompt-container.ng-star-inserted:hover {
+    border: 1px solid var(--accent) !important;
+    background-color: var(--bg-surface) !important;
+}
+
+bot-experiment-disclaimer {
+    display: none;
+}
+
+/* initial buttons (make a image or teach me something) */
+div[class*="scroll-container"][class*="ng-star-inserted"] {
+    background-color: var(--bg-main) !important;
+}
+
+.template.ng-star-inserted {
+    border-radius: 0px !important;
+    border: 1px solid var(--border-color) !important;
+    overflow: hidden !important;
+    transition: 0.3s !important;
+}
+
+.template.ng-star-inserted img {
+    border-radius: 0px !important;
+    transition: 0.3s !important;
+}
+
+.template.ng-star-inserted:hover {
+    border: 1px solid var(--accent) !important;
+}
+
+.template.ng-star-inserted:hover img {
+    transform: scale(1.05);
+}
+
+.template-overlay {
+    border-radius: 0px !important;
+}
+
+div.blur-bg.visible-primary-message.blur-shown {
+    background: var(--bg-main) !important;
+}
+
+ul {
+    gap: 10px;
+}
+
+li.suggestion.ng-tns-c2544272761-10.animate-on-enter.ng-star-inserted {
+    border-radius: 0px !important;
+    background: var(--bg-panel) !important;
+    border: 1px solid var(--border-color) !important;
+    transition: 0.3s;
+}
+
+li.suggestion.ng-tns-c2544272761-10.animate-on-enter.ng-star-inserted:hover {
+    border: 1px solid var(--accent) !important;
+    background: var(--bg-surface) !important;
+}
+
+/* pop up new conversation */
+.mat-mdc-dialog-inner-container.mdc-dialog__container {
+    border: 1px solid var(--accent) !important;
+    background: var(--bg-panel) !important;
+}
+
+.mat-mdc-dialog-surface.mdc-dialog__surface {
+    background: var(--bg-panel) !important;
+}
+
+/* settings menu */
+.mat-mdc-menu-panel.desktop-settings-menu {
+    background-color: var(--bg-panel) !important;
+    border-radius: 0% !important;
+}
+
+.mat-mdc-menu-item {
+    display: flex !important;
+    color: var(--text-main) !important;
+}
+
+xap-count-badge {
+    background: var(--accent) !important;
+}
+
+/* thinking error */
+model-response, 
+.response-container,
+.response-container-content {
+    background-color: var(--bg-main) !important;
+    transition: none !important;
+}
+
+/* write-zone menus */
+.cdk-overlay-pane > .mat-mdc-menu-panel,
+.cdk-overlay-pane > .mat-mdc-card,
+.toolbox-drawer-card,
+.upload-file-card-container {
+    border-radius: 0px !important;
+    background: var(--bg-panel) !important;
+    border: 1px solid var(--border-color) !important;
+    transition: 0.3s;
+}
