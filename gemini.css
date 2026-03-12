@@ -372,19 +372,18 @@ div.blur-bg.visible-primary-message.blur-shown {
     background: var(--bg-main) !important;
 }
 
-/* a partir de aqui esta roto, xd */
 ul {
     gap: 10px;
 }
 
-li.suggestion.ng-tns-c2544272761-10.animate-on-enter.ng-star-inserted {
+li.suggestion.animate-on-enter.ng-star-inserted {
     border-radius: 0px !important;
     background: var(--bg-panel) !important;
     border: 1px solid var(--border-color) !important;
     transition: 0.3s;
 }
 
-li.suggestion.ng-tns-c2544272761-10.animate-on-enter.ng-star-inserted:hover {
+li.suggestion.animate-on-enter.ng-star-inserted:hover {
     border: 1px solid var(--accent) !important;
     background: var(--bg-surface) !important;
 }
@@ -431,4 +430,11 @@ model-response,
     background: var(--bg-panel) !important;
     border: 1px solid var(--border-color) !important;
     transition: 0.3s;
+}
+/* upload files */
+div.file-preview.discovery-feed-theme.ng-star-inserted {
+    border-radius: 0px !important;
+    background: var(--bg-panel) !important;
+    border: 1px solid var(--accent) !important;
+    transition: 0.3s; 
 }
