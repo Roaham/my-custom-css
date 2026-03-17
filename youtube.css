@@ -1,0 +1,407 @@
+/* Voice search button scaling */
+/* --- THEME VARIABLES --- */
+html:not(.style-scope) {
+    --bg-main: #1e1e2e;
+    --bg-dark: #11111b;
+    --bg-panel: #181825;
+    --bg-surface: #313244;
+    --text-main: #cdd6f4;
+    --accent: #cba6f7;
+    --accent-glow: rgba(203, 166, 247, 0.15);
+    --border-color: #313244;
+    --secondary-text: #bac2de;
+
+    /* Global Font Overrides */
+    --yt-spec-base-background: var(--bg-main) !important;
+    font-family: 'Fira Code', 'JetBrains Mono', monospace !important;
+}
+
+/* --- global --- */
+* {
+    scrollbar-width: none !important;
+    border-radius: 0px !important;
+}
+
+span, p, h1, h2, h3, #video-title, #content-text {
+    font-family: 'Fira Code', 'JetBrains Mono', monospace !important;
+    color: var(--text-main) !important;
+}
+
+b, strong {
+    color: var(--accent) !important;
+}
+
+div.style-scope.ytd-feed-filter-chip-bar-renderer {
+    background: var(--bg-main);
+}
+
+/* youtube logo */
+path[fill="#FF0033"] {
+    fill: var(--accent) !important;
+}
+
+/* --- hide shorts --- */
+ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+ytd-reel-shelf-renderer,
+ytd-rich-shelf-renderer[is-shorts],
+ytd-guide-entry-renderer:has(a[href^="/shorts"]),
+ytd-mini-guide-entry-renderer[aria-label="Shorts"],
+ytd-rich-item-renderer:has([overlay-style="SHORTS"]),
+ytd-video-renderer:has([overlay-style="SHORTS"]) {
+    display: none !important;
+}
+
+ytd-rich-item-renderer {
+    margin: 0 !important;
+    padding: 8px !important;
+    box-sizing: border-box !important;
+    width: 33.33% !important; 
+    min-width: 33.33% !important;
+    max-width: 33.33% !important;
+    --ytd-rich-grid-items-per-row: 3 !important;
+}
+
+/* --- video grid nd thumnails --- */
+ytd-rich-item-renderer {
+    background-color: var(--bg-panel) !important;
+    border: 1px solid var(--border-color) !important;
+    margin-bottom: 12px !important;
+    padding: 10px !important;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+ytd-rich-item-renderer:hover {
+    border: 1px solid var(--accent) !important;
+    background-color: var(--bg-surface) !important;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* remove overlay */
+.yt-spec-touch-feedback-shape__hover-effect,
+.yt-spec-touch-feedback-shape__fill,
+.yt-interaction {
+    display: none !important;
+}
+
+/* --- navbar --- */
+ytd-mini-guide-renderer {
+    background: var(--bg-dark) !important;
+    border-right: 1px solid var(--border-color) !important;
+}
+
+ytd-mini-guide-entry-renderer .title {
+    display: none !important;
+}
+
+ytd-mini-guide-entry-renderer #endpoint {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    height: 48px !important; 
+}
+
+ytd-mini-guide-entry-renderer {
+    position: relative !important;
+    margin: 12px 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px; 
+    border: 1px solid transparent !important; 
+    background-color: transparent !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow: visible !important;
+}
+
+ytd-mini-guide-entry-renderer:hover {
+    transform: scale(1.1);
+    background-color: var(--bg-panel) !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 15px var(--accent) !important;
+    z-index: 10 !important;
+}
+
+ytd-mini-guide-entry-renderer::after {
+    content: "";
+    position: absolute;
+    top: 25%; 
+    height: 50%; 
+    left: -6px; 
+    width: 0;  
+    background-color: var(--accent);
+    border-radius: 4px; 
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; 
+    opacity: 0;
+}
+
+ytd-mini-guide-entry-renderer:hover::after {
+    width: 4px; 
+    left: -2px;
+    opacity: 1;  
+}
+
+ytd-mini-guide-entry-renderer yt-icon {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+/* Icons change color on hover to emphasize the accent */
+ytd-mini-guide-entry-renderer:hover yt-icon,
+ytd-mini-guide-entry-renderer:hover .yt-spec-icon-shape {
+    fill: var(--accent) !important;
+    color: var(--accent) !important;
+}
+
+mat-icon, .yt-spec-icon-shape {
+    color: var(--text-main) !important; /* Default color */
+    transition: color 0.3s ease !important;
+}
+
+/* --- top buttons --- */
+
+yt-chip-cloud-chip-renderer {
+    background: var(--bg-panel) !important;
+    border: 1px solid var(--border-color) !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+yt-chip-cloud-chip-renderer div.ytChipShapeChip {
+    color: var(--text-main) !important;
+    background-color: transparent !important;
+}
+
+yt-chip-cloud-chip-renderer:hover {
+    text-transform: uppercase !important;
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--accent) !important;
+    cursor: pointer;
+}
+
+yt-chip-cloud-chip-renderer[selected] {
+    text-transform: uppercase !important;
+    background-color: var(--accent) !important;
+    border-color: var(--accent) !important;
+}
+
+yt-chip-cloud-chip-renderer[selected] div.ytChipShapeChip {
+    text-transform: uppercase !important;
+    color: var(--bg-dark) !important;
+}
+
+.ytChipShapeChip.ytChipShapeInactive, 
+.ytChipShapeChip.ytChipShapeActive {
+    background-color: transparent !important;
+}
+
+#chip-shape-container.yt-chip-cloud-chip-renderer {
+    border: none !important;
+}
+
+/* --- topbar --- */
+#masthead-container.ytd-app,
+ytd-masthead,
+#background.ytd-masthead {
+    background-color: var(--bg-dark) !important;
+    background: var(--bg-dark) !important;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    border-bottom: 2px solid var(--border-color) !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+#masthead-container.ytd-app:hover {
+    border-color: var(--accent) !important;
+    box-shadow: 0 4px 15px -5px var(--accent) !important;
+}
+
+/* --- search box --- */
+.ytSearchboxComponentInputContainer {
+    background-color: var(--bg-panel) !important;
+    border: 1px solid var(--border-color) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    padding-left: 8px !important;
+    opacity: 1;
+}
+
+.ytSearchboxComponentInputContainer:hover,
+.ytSearchboxComponentInputContainer:focus-within {
+    transform: scale(1.04);
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 15px var(--accent) !important;
+}
+
+.ytSearchboxComponentInputBox {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+input.ytSearchboxComponentInput {
+    color: var(--text-main) !important;
+    font-family: 'Fira Code', monospace !important;
+    background-color: transparent !important;
+}
+
+.ytSearchboxComponentSearchButton {
+    background-color: transparent !important;
+    border-left: 1px solid var(--border-color) !important;
+    transition: all 0.2s ease !important;
+}
+
+.ytSearchboxComponentSearchButton:hover {
+    background-color: var(--accent) !important;
+}
+
+#voice-search-button {
+    display: none !important;
+}
+
+.yt-spec-button-shape-next.yt-spec-button-shape-next--tonal.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--icon-leading.yt-spec-button-shape-next--enable-backdrop-filter-experiment {
+    display: none !important;
+}
+
+/* yt video */
+#cinematics-container {
+    display: none !important;
+}
+
+#cinematics canvas {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+.style-scope.ytd-watch-flexy[is-two-columns_] #cinematics-container {
+    height: 0px !important;
+}
+
+
+#top-level-buttons-computed ytd-button-renderer,
+#top-level-buttons-computed ytd-segmented-like-dislike-button-renderer,
+.ytd-menu-renderer.style-scope[button-renderer] {
+    border: 2px solid transparent;
+    border-radius: 18px;
+    transition: all 0.2s ease;
+}
+
+#top-level-buttons-computed ytd-button-renderer:hover,
+#top-level-buttons-computed ytd-segmented-like-dislike-button-renderer:hover,
+.ytd-menu-renderer.style-scope[button-renderer]:hover {
+    border-color: var(--accent) !important;
+    background-color: var(--bg-surface) !important;
+}
+
+#description.ytd-watch-metadata {
+    border: 2px solid transparent !important;
+    transition: all 0.2s ease;
+}
+
+#description.ytd-watch-metadata:hover {
+    border-color: var(--accent) !important;
+    background-color: var(--bg-surface) !important;
+}
+
+.ytd-item-section-renderer.lockup.yt-lockup-view-model--wrapper {
+    padding: 4px;
+    border: 2px solid transparent !important;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.ytd-item-section-renderer.lockup.yt-lockup-view-model--wrapper:hover {
+    border-color: var(--accent) !important;
+    background-color: var(--bg-surface) !important;
+}
+
+.ytd-item-section-renderer.lockup.yt-lockup-view-model--wrapper #dismissible {
+    padding: 2px;
+}
+
+.yt-spec-button-shape-next.yt-spec-button-shape-next--filled.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--enable-backdrop-filter-experiment {
+    color: var(--accent);
+    background: var(--bg-panel);
+}
+
+ytd-playlist-panel-renderer,
+.style-scope.ytd-playlist-panel-renderer {
+    background: var(--bg-panel);
+    transition: 0.2s;
+}
+
+ytd-playlist-panel-renderer:hover {
+    border: 1px solid var(--accent);
+}
+
+/* search recommendations */
+.ytSearchboxComponentSuggestionsContainer.ytSearchboxComponentSuggestionsContainerDark.ytSearchboxComponentSuggestionsContainerScrollable {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+}
+
+.ytSuggestionComponentText:hover {
+    transform: scale(1.1);
+}
+
+.ytSuggestionComponentText {
+    transition: 0.2s;
+}
+
+/* sidebar extended */
+#guide-content.ytd-app, 
+ytd-guide-renderer {
+    background-color: var(--bg-dark) !important;
+}
+
+ytd-guide-entry-renderer {
+    margin: 4px 8px !important;
+    border: 1px solid transparent !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+ytd-guide-entry-renderer:hover {
+    transform: scale(1.02);
+    background-color: var(--bg-panel) !important;
+    border-color: var(--accent) !important;
+}
+
+ytd-guide-entry-renderer:hover yt-icon,
+ytd-guide-entry-renderer:hover .title {
+    color: var(--accent) !important;
+    fill: var(--accent) !important;
+}
+
+ytd-guide-entry-renderer .title {
+    color: var(--text-main) !important;
+    font-family: 'Fira Code', monospace !important;
+    font-size: 14px !important;
+}
+
+#newness-dot.ytd-guide-entry-renderer {
+    background-color: var(--accent) !important;
+}
+
+ytd-guide-entry-renderer:has(a[title="Shorts"]),
+ytd-guide-entry-renderer:has(a[href^="/shorts"]) {
+    display: none !important;
+}
+
+/* notifications */
+ytd-multi-page-menu-renderer {
+    background: var(--bg-dark) !important;
+    border: 2px solid var(--border-color) !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+    overflow: hidden !important;
+}
+
+/* Glow effect when the menu is active/hovered */
+ytd-multi-page-menu-renderer:hover {
+    border-color: var(--accent) !important;
+}
+
+ytd-simple-menu-header-renderer, 
+.style-scope.ytd-multi-page-menu-renderer #header {
+    background: var(--bg-panel) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
