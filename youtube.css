@@ -593,7 +593,7 @@ ytd-menu-popup-renderer {
     border-radius: 0px !important;
 }
 
-/* --- COMENTARIOS --- */
+/* --- COMMENTS --- */
 ytd-comments-header-renderer,
 #comments.ytd-watch-flexy {
     background-color: var(--bg-main) !important;
@@ -665,4 +665,180 @@ ytd-comment-renderer {
 .ytp-load-progress {
     background-color: var(--border-color) !important;
     opacity: 0.5 !important;
+}
+
+/* --- CHANNEL HEADER ADAPTATION --- */
+.style-scope.ytd-tabbed-page-header {
+    background-color: var(--bg-main) !important;
+    background: var(--bg-main) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+tp-yt-app-toolbar.style-scope.ytd-tabbed-page-header {
+    background-color: var(--bg-main) !important;
+}
+
+#tabs-divider.style-scope.ytd-tabbed-page-header {
+    display: none !important;
+}
+
+
+/* --- CHANNEL TABS OPTIMIZED --- */
+
+#selectionBar,
+.ytTabShapeTabBar,
+.ytTabShapeTabBarSelected,
+.ytTabShapeTabBarInactive,
+.tabGroupShapeSlider {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* BASE TAB ARCHITECTURE */
+yt-tab-shape {
+    position: relative !important;
+    border-radius: 0 !important;
+    padding: 0 20px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    transition: background-color 0.15s steps(4) !important;
+    cursor: crosshair !important;
+}
+
+.ytTabShapeTab {
+    font-family: 'Fira Code', monospace !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    color: var(--text-main) !important;
+    letter-spacing: 1px !important;
+    z-index: 5;
+}
+
+/* The Top Accent Line */
+yt-tab-shape::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent) !important;
+    z-index: 10;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* The Corner Block (Brutalist Style) */
+yt-tab-shape::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    /* Using clip-path for sharper geometric precision than borders */
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    opacity: 0;
+    z-index: 11;
+    transition: opacity 0.1s ease;
+}
+
+
+/* Active State */
+yt-tab-shape[aria-selected="true"]::before {
+    transform: scaleX(1);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+yt-tab-shape[aria-selected="true"]::after,
+yt-tab-shape:hover::after {
+    opacity: 1;
+}
+
+/* Hover State */
+yt-tab-shape:hover {
+    background-color: var(--bg-panel) !important;
+}
+
+yt-tab-shape:hover .ytTabShapeTab,
+yt-tab-shape[aria-selected="true"] .ytTabShapeTab {
+    color: var(--accent) !important;
+}
+
+ytd-expandable-tab-renderer yt-icon {
+    color: var(--text-main) !important;
+    transition: color 0.2s ease !important;
+}
+
+ytd-expandable-tab-renderer:hover yt-icon {
+    color: var(--accent) !important;
+    filter: drop-shadow(0 0 5px var(--accent-glow));
+}
+
+/* LOADING */
+.spinner-layer.style-scope.tp-yt-paper-spinner-lite {
+  border-color: var(--accent) !important;
+}
+
+/* --- 1. VIDEO PLAYER: CLEAN & BOLD --- */
+ytd-channel-video-player-renderer {
+    margin: 32px 0 !important;
+    padding: 24px !important;
+    background: rgba(255, 255, 255, 0.03) !important; /* Subtle glass effect */
+    border: 2px solid var(--accent) !important; /* Thicker accent border */
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.5) !important; /* Retro-tech offset shadow */
+}
+
+/* --- 2. SECTION CONTAINERS: GLASS & FOCUS --- */
+ytd-item-section-renderer {
+    margin-bottom: 60px !important;
+    padding: 30px !important;
+    border-top: 1px solid var(--border-color) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    /* Clean background without the grid squares */
+    background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%) !important;
+}
+
+/* --- 3. BOLD TITLES (ACRECENTADOS) --- */
+#title-container.ytd-grid-renderer, 
+h2.ytd-item-section-header-renderer {
+    font-family: 'Fira Code', monospace !important;
+    font-size: 28px !important; /* Large scale title */
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: -1px !important; /* Modern tight spacing */
+    color: var(--text-main) !important;
+    margin-bottom: 35px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Decorative line next to the title */
+#title-container.ytd-grid-renderer::after,
+h2.ytd-item-section-header-renderer::after {
+    content: "";
+    height: 2px;
+    flex-grow: 1;
+    background: var(--accent);
+    margin-left: 20px;
+    opacity: 0.5;
+}
+
+/* --- VIDEO CARD ENHANCEMENTS --- */
+.yt-horizontal-list-renderer.lockup.ytLockupViewModelWrapper {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-top: 12px !important;
+    border-radius: 0px;
+    border: 1px solid var(--border-color) !important;
+    transition: 0.2s;
+}
+
+.yt-horizontal-list-renderer.lockup.ytLockupViewModelWrapper:hover {
+    border: 1px solid var(--accent) !important;
 }
