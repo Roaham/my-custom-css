@@ -602,3 +602,67 @@ ytd-comments-header-renderer,
 ytd-comment-renderer {
     border: 1px solid var(--border-color) !important;
 }
+
+/* yt miniplayer */
+.ytdMiniplayerComponentContent {
+    border-radius: 0px !important;
+    border: 2px solid var(--border-color) !important;
+    transition: 0.1s;
+}
+
+.ytdMiniplayerComponentContent:hover {
+    border: 1px solid var(--accent) !important;
+}
+
+.ytdMiniplayerInfoBarHost.ytdMiniplayerInfoBarHasPlaylistData {
+    background-color: var(--bg-main);
+}
+
+/* --- PLAYER CONTAINER (WATCH VIEW) --- */
+#player-container-outer.style-scope.ytd-watch-flexy {
+    border-radius: 0px !important;
+    border: 1px solid var(--border-color) !important;
+    transition: border 0.1s;
+    background-color: var(--bg-dark) !important;
+    overflow: hidden;
+}
+
+#ytd-player.style-scope.ytd-watch-flexy {
+    border-radius: 0px !important;
+    box-shadow: none !important;
+}
+
+#player-container-outer.style-scope.ytd-watch-flexy:hover {
+    border: 2px solid var(--accent) !important;
+}
+
+/* --- PROGRESS BAR & SCRUBBER --- */
+.ytp-scrubber-button {
+    background-color: var(--accent) !important;
+    border-radius: 0px !important;
+    width: 14px !important;
+    height: 14px !important;
+    transition: transform 0.1s ease-in-out;
+}
+
+.ytp-play-progress {
+    background: var(--accent) !important;
+}
+
+.ytp-scrubber-pull-indicator {
+    display: none !important;
+}
+
+.ytp-hover-progress {
+    background-color: var(--accent) !important;
+    opacity: 0.3 !important;
+}
+
+.ytp-progress-list {
+    background-color: var(--bg-dark) !important;
+}
+
+.ytp-load-progress {
+    background-color: var(--border-color) !important;
+    opacity: 0.5 !important;
+}
