@@ -1,28 +1,107 @@
-/* Voice search button scaling */
+/* ============================================
+   YouTube — Catppuccin Mocha Theme
+   Updated: Mayo 2026
+   ============================================ */
+
 /* --- THEME VARIABLES --- */
-html:not(.style-scope) {
-    --bg-main: #1e1e2e;
-    --bg-dark: #11111b;
-    --bg-panel: #181825;
-    --bg-surface: #313244;
-    --text-main: #cdd6f4;
-    --accent: #cba6f7;
-    --accent-glow: rgba(203, 166, 247, 0.15);
-    --border-color: #313244;
+:root,
+html:not(.style-scope),
+ytd-app {
+    --bg-main:        #1e1e2e;
+    --bg-dark:        #11111b;
+    --bg-panel:       #181825;
+    --bg-surface:     #313244;
+    --text-main:      #cdd6f4;
+    --accent:         #cba6f7;
+    --accent-glow:    rgba(203, 166, 247, 0.15);
+    --border-color:   #313244;
     --secondary-text: #bac2de;
 
-    /* Global Font Overrides */
-    --yt-spec-base-background: var(--bg-main) !important;
     font-family: 'Fira Code', 'JetBrains Mono', monospace !important;
 }
 
-/* --- global --- */
+html,
+body,
+ytd-app,
+#content.ytd-app,
+#page-manager.ytd-app,
+ytd-browse,
+ytd-two-column-browse-results-renderer {
+    background-color: var(--bg-main) !important;
+    background: var(--bg-main) !important;
+}
+
+/* Natives var of yt css */
+ytd-app {
+    --yt-spec-base-background:              var(--bg-main)   !important;
+    --yt-spec-raised-background:            var(--bg-panel)  !important;
+    --yt-spec-menu-background:              var(--bg-dark)   !important;
+    --yt-spec-inverted-background:          var(--bg-surface)!important;
+    --yt-spec-touch-response-inverse:       var(--bg-surface)!important;
+    --yt-spec-static-brand-white:           var(--text-main) !important;
+    --yt-spec-text-primary:                 var(--text-main) !important;
+    --yt-spec-text-secondary:               var(--secondary-text) !important;
+    --yt-spec-outline:                      var(--border-color) !important;
+    --yt-spec-brand-background-solid:       var(--bg-panel)  !important;
+    --yt-spec-general-background-a:         var(--bg-main)   !important;
+    --yt-spec-general-background-b:         var(--bg-panel)  !important;
+    --yt-spec-general-background-c:         var(--bg-surface)!important;
+    --yt-spec-call-to-action:               var(--accent)    !important;
+    --yt-spec-brand-link-text:              var(--accent)    !important;
+    --yt-spec-10-percent-layer:             rgba(203,166,247,0.1) !important;
+}
+
+/* --- GLOBAL --- */
 * {
     scrollbar-width: none !important;
+}
+
+/* border reset (Botones, Miniaturas, Chips) */
+ytd-rich-item-renderer,
+ytd-mini-guide-entry-renderer,
+ytd-guide-entry-renderer,
+ytd-compact-video-renderer,
+ytd-video-renderer,
+ytd-playlist-renderer,
+ytd-thumbnail,
+ytd-thumbnail *,
+yt-img-shadow,
+yt-img-shadow img,
+yt-chip-cloud-chip-renderer,
+#endpoint.yt-simple-endpoint,
+tp-yt-paper-button,
+ytd-subscribe-button-renderer button,
+ytd-button-renderer a {
     border-radius: 0px !important;
 }
 
-span, p, h1, h2, h3, #video-title, #content-text {
+/* Interactuable */
+yt-interaction,
+yt-interaction *,
+.yt-interaction,
+.yt-spec-touch-feedback-shape,
+.yt-spec-touch-feedback-shape__fill,
+.yt-spec-touch-feedback-shape__hover-effect,
+.yt-spec-button-shape-next,
+.yt-spec-button-shape-next--size-m,
+.yt-spec-button-shape-next--fill-high-emphasis,
+.yt-spec-button-shape-next--fill-mono-all-white {
+    border-radius: 0px !important;
+    clip-path: none !important;
+    -webkit-clip-path: none !important;
+    --yt-spec-touch-feedback-shape-border-radius: 0px !important;
+    --yt-button-border-radius: 0px !important;
+    --yt-mweb-filled-button-border-radius: 0px !important;
+    --yt-fab-border-radius: 0px !important;
+}
+
+/* TIPOGRAPHY */
+span, p, h1, h2, h3,
+#video-title,
+#content-text,
+yt-formatted-string,
+#title,
+#channel-name {
     font-family: 'Fira Code', 'JetBrains Mono', monospace !important;
     color: var(--text-main) !important;
 }
@@ -31,16 +110,28 @@ b, strong {
     color: var(--accent) !important;
 }
 
-div.style-scope.ytd-feed-filter-chip-bar-renderer {
-    background: var(--bg-main);
+/* 4. ELEMENTOS ESPECÍFICOS DE LA INTERFAZ */
+/* Feed filter bar */
+div.style-scope.ytd-feed-filter-chip-bar-renderer,
+#chips-wrapper.ytd-feed-filter-chip-bar-renderer {
+    background: var(--bg-main) !important;
 }
 
-/* youtube logo */
+yt-chip-cloud-chip-renderer {
+    border-radius: 0px !important;
+}
+
+/* YouTube logo */
 path[fill="#FF0033"] {
     fill: var(--accent) !important;
 }
 
-/* --- hide shorts --- */
+#container.ytd-searchbox,
+#search-icon-legacy.ytd-searchbox {
+    border-radius: 0px !important;
+}
+
+/* --- HIDE SHORTS --- */
 ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
 ytd-reel-shelf-renderer,
 ytd-rich-shelf-renderer[is-shorts],
@@ -51,22 +142,24 @@ ytd-video-renderer:has([overlay-style="SHORTS"]) {
     display: none !important;
 }
 
+/* --- VIDEO GRID --- */
+/* New Layout */
+#contents.ytd-rich-grid-renderer {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
 ytd-rich-item-renderer {
     margin: 0 !important;
     padding: 8px !important;
     box-sizing: border-box !important;
-    width: 33.33% !important; 
+    width: 33.33% !important;
     min-width: 33.33% !important;
     max-width: 33.33% !important;
     --ytd-rich-grid-items-per-row: 3 !important;
-}
-
-/* --- video grid nd thumnails --- */
-ytd-rich-item-renderer {
     background-color: var(--bg-panel) !important;
     border: 1px solid var(--border-color) !important;
     margin-bottom: 12px !important;
-    padding: 10px !important;
     transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
 
@@ -75,19 +168,28 @@ ytd-rich-item-renderer:hover {
     background-color: var(--bg-surface) !important;
     transform: translateY(-4px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3) !important;
+    z-index: 10;
+    
 }
 
 /* remove overlay */
-.yt-spec-touch-feedback-shape__hover-effect,
-.yt-spec-touch-feedback-shape__fill,
-.yt-interaction {
+yt-touch-feedback-shape .ytSpecTouchFeedbackShapeHoverEffect,
+yt-touch-feedback-shape .ytSpecTouchFeedbackShapeFill,
+yt-touch-feedback-shape .ytSpecTouchFeedbackShapeStroke {
+    display: none !important;
+}
+yt-interaction.yt-interaction .stroke,
+yt-interaction.yt-interaction .fill {
+    display: none !important;
+}
+.ytSpecTouchFeedbackShapeHost {
     display: none !important;
 }
 
-/* --- navbar --- */
+/* --- NAVBAR LATERAL MINI --- */
 ytd-mini-guide-renderer {
     background: var(--bg-dark) !important;
-    border-right: 1px solid var(--border-color) !important;
+    background-color: var(--bg-dark) !important;
 }
 
 ytd-mini-guide-entry-renderer .title {
@@ -100,7 +202,7 @@ ytd-mini-guide-entry-renderer #endpoint {
     justify-content: center !important;
     align-items: center !important;
     padding: 0 !important;
-    height: 48px !important; 
+    height: 48px !important;
 }
 
 ytd-mini-guide-entry-renderer {
@@ -109,8 +211,7 @@ ytd-mini-guide-entry-renderer {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    border-radius: 8px; 
-    border: 1px solid transparent !important; 
+    border: 1px solid transparent !important;
     background-color: transparent !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     overflow: visible !important;
@@ -120,27 +221,26 @@ ytd-mini-guide-entry-renderer:hover {
     transform: scale(1.1);
     background-color: var(--bg-panel) !important;
     border-color: var(--accent) !important;
-    box-shadow: 0 0 15px var(--accent) !important;
+    box-shadow: 0 0 15px var(--accent-glow) !important;
     z-index: 10 !important;
 }
 
 ytd-mini-guide-entry-renderer::after {
     content: "";
     position: absolute;
-    top: 25%; 
-    height: 50%; 
-    left: -6px; 
-    width: 0;  
+    top: 25%;
+    height: 50%;
+    left: -6px;
+    width: 0;
     background-color: var(--accent);
-    border-radius: 4px; 
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; 
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     opacity: 0;
 }
 
 ytd-mini-guide-entry-renderer:hover::after {
-    width: 4px; 
+    width: 4px;
     left: -2px;
-    opacity: 1;  
+    opacity: 1;
 }
 
 ytd-mini-guide-entry-renderer yt-icon {
@@ -148,7 +248,6 @@ ytd-mini-guide-entry-renderer yt-icon {
     height: 24px !important;
 }
 
-/* Icons change color on hover to emphasize the accent */
 ytd-mini-guide-entry-renderer:hover yt-icon,
 ytd-mini-guide-entry-renderer:hover .yt-spec-icon-shape {
     fill: var(--accent) !important;
@@ -156,12 +255,11 @@ ytd-mini-guide-entry-renderer:hover .yt-spec-icon-shape {
 }
 
 mat-icon, .yt-spec-icon-shape {
-    color: var(--text-main) !important; /* Default color */
+    color: var(--text-main) !important;
     transition: color 0.3s ease !important;
 }
 
-/* --- top buttons --- */
-
+/* --- CHIPS --- */
 yt-chip-cloud-chip-renderer {
     background: var(--bg-panel) !important;
     border: 1px solid var(--border-color) !important;
@@ -191,7 +289,7 @@ yt-chip-cloud-chip-renderer[selected] div.ytChipShapeChip {
     color: var(--bg-dark) !important;
 }
 
-.ytChipShapeChip.ytChipShapeInactive, 
+.ytChipShapeChip.ytChipShapeInactive,
 .ytChipShapeChip.ytChipShapeActive {
     background-color: transparent !important;
 }
@@ -200,10 +298,14 @@ yt-chip-cloud-chip-renderer[selected] div.ytChipShapeChip {
     border: none !important;
 }
 
-/* --- topbar --- */
+/* --- TOPBAR / MASTHEAD --- */
+/* more capes for the header xd */
 #masthead-container.ytd-app,
 ytd-masthead,
-#background.ytd-masthead {
+#background.ytd-masthead,
+tp-yt-app-header,
+tp-yt-app-header-layout,
+#masthead {
     background-color: var(--bg-dark) !important;
     background: var(--bg-dark) !important;
     opacity: 1 !important;
@@ -214,23 +316,26 @@ ytd-masthead,
 
 #masthead-container.ytd-app:hover {
     border-color: var(--accent) !important;
-    box-shadow: 0 4px 15px -5px var(--accent) !important;
+    box-shadow: 0 4px 15px -5px var(--accent-glow) !important;
 }
 
-/* --- search box --- */
+.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextTonal.ytSpecButtonShapeNextOverlay.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextIconLeading.ytSpecButtonShapeNextEnableBackdropFilterExperiment {
+    border-radius: 0px !important;
+}
+
+/* --- SEARCHBAR --- */
 .ytSearchboxComponentInputContainer {
     background-color: var(--bg-panel) !important;
     border: 1px solid var(--border-color) !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     padding-left: 8px !important;
-    opacity: 1;
 }
 
 .ytSearchboxComponentInputContainer:hover,
 .ytSearchboxComponentInputContainer:focus-within {
     transform: scale(1.04);
     border-color: var(--accent) !important;
-    box-shadow: 0 0 15px var(--accent) !important;
+    box-shadow: 0 0 15px var(--accent-glow) !important;
 }
 
 .ytSearchboxComponentInputBox {
@@ -247,6 +352,7 @@ input.ytSearchboxComponentInput {
 .ytSearchboxComponentSearchButton {
     background-color: transparent !important;
     border-left: 1px solid var(--border-color) !important;
+    border-radius: 0px;
     transition: all 0.2s ease !important;
 }
 
@@ -258,100 +364,170 @@ input.ytSearchboxComponentInput {
     display: none !important;
 }
 
-.yt-spec-button-shape-next.yt-spec-button-shape-next--tonal.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--icon-leading.yt-spec-button-shape-next--enable-backdrop-filter-experiment {
+/* no voice search */
+.yt-spec-button-shape-next--tonal.yt-spec-button-shape-next--overlay {
     display: none !important;
 }
 
-/* yt video */
-#cinematics-container {
-    display: none !important;
-}
-
+/* --- VIDEOPAGE --- */
+#cinematics-container,
 #cinematics canvas {
     display: none !important;
-    opacity: 0 !important;
 }
 
-.style-scope.ytd-watch-flexy[is-two-columns_] #cinematics-container {
-    height: 0px !important;
+/* suscribe button */
+.ytSmartImationsContent #subscribe-button-shape button,
+.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextFilled.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextEnableBackdropFilterExperiment {
+    background: var(--bg-panel) !important;
+    background-color: var(--bg-panel) !important;
+    color: var(--yt-spec-text-primary) !important;
+    border: 1px solid var(--yt-spec-10-percent-layer) !important;
+    border-radius: 0px !important;
+    transition: 
+        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+        box-shadow 0.2s ease, 
+        border-color 0.2s ease !important;
+    
+    height: 32px !important;
+    padding: 0 16px !important;
 }
 
-
-#top-level-buttons-computed ytd-button-renderer,
-#top-level-buttons-computed ytd-segmented-like-dislike-button-renderer,
-.ytd-menu-renderer.style-scope[button-renderer] {
-    border: 2px solid transparent;
-    border-radius: 18px;
-    transition: all 0.2s ease;
+.ytSmartImationsContent #subscribe-button-shape button:hover,
+.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextFilled.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextEnableBackdropFilterExperiment:hover {
+    border-color: var(--accent) !important;
+    transform: translate(-5px, 5px) !important;    
+    box-shadow: 4px -4px 0px 0px var(--accent) !important;
 }
 
-#top-level-buttons-computed ytd-button-renderer:hover,
-#top-level-buttons-computed ytd-segmented-like-dislike-button-renderer:hover,
-.ytd-menu-renderer.style-scope[button-renderer]:hover {
+.ytSmartImationsContent #subscribe-button-shape .ytSpecButtonShapeNextButtonTextContent,
+.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextFilled.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextEnableBackdropFilterExperiment {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ytSmartImationsContent .ytAnimatedActionLottie {
+    display: none !important;
+}
+ 
+/* Buttons of like/dislike/share */
+#actions-inner.ytd-watch-metadata,
+#actions-inner.ytd-watch-metadata * {
+    border-radius: 0px !important;
+}
+
+#actions-inner.ytd-watch-metadata yt-button-shape,
+#actions-inner.ytd-watch-metadata .yt-spec-button-shape-next,
+#actions-inner.ytd-watch-metadata segmented-like-dislike-button-view-model {
+    border-radius: 0px !important;
+    border: 1px solid transparent; /* Reserva el espacio para el borde */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+#actions-inner.ytd-watch-metadata yt-button-shape:hover,
+#actions-inner.ytd-watch-metadata .yt-spec-button-shape-next:hover,
+#actions-inner.ytd-watch-metadata segmented-like-dislike-button-view-model:hover {
     border-color: var(--accent) !important;
     background-color: var(--bg-surface) !important;
+    cursor: pointer;
 }
-
+ 
+/* Description */
 #description.ytd-watch-metadata {
     border: 2px solid transparent !important;
     transition: all 0.2s ease;
+    border-radius: 0px;
 }
-
+ 
 #description.ytd-watch-metadata:hover {
     border-color: var(--accent) !important;
     background-color: var(--bg-surface) !important;
 }
 
-.ytd-item-section-renderer.lockup.yt-lockup-view-model--wrapper {
-    padding: 4px;
+yt-video-metadata-carousel-view-model.ytVideoMetadataCarouselViewModelHost {
     border: 2px solid transparent !important;
-    border-radius: 12px;
     transition: all 0.2s ease;
-    cursor: pointer;
+    border-radius: 0px;
 }
 
-.ytd-item-section-renderer.lockup.yt-lockup-view-model--wrapper:hover {
+yt-video-metadata-carousel-view-model.ytVideoMetadataCarouselViewModelHost:hover {
     border-color: var(--accent) !important;
     background-color: var(--bg-surface) !important;
 }
-
-.ytd-item-section-renderer.lockup.yt-lockup-view-model--wrapper #dismissible {
-    padding: 2px;
-}
-
-.yt-spec-button-shape-next.yt-spec-button-shape-next--filled.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--enable-backdrop-filter-experiment {
-    color: var(--accent);
-    background: var(--bg-panel);
-}
-
+ 
+/* Lateral Playlist */
 ytd-playlist-panel-renderer,
 .style-scope.ytd-playlist-panel-renderer {
-    background: var(--bg-panel);
-    transition: 0.2s;
+    background: var(--bg-panel) !important;
+    background-color: var(--bg-panel) !important;
+    border-radius: 0px;
+    transition: border 0.2s ease-in-out, background 0.2s;
+    border: 1px solid transparent !important;
+    box-sizing: border-box;
 }
 
 ytd-playlist-panel-renderer:hover {
+    border: 1px solid var(--accent) !important;
+}
+
+#container.ytd-playlist-panel-renderer {
+    padding: 0px !important;
+}
+
+#playlist-items.style-scope.ytd-playlist-panel-renderer {
+    transition: 
+        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+        box-shadow 0.2s ease, 
+        border-color 0.2s ease !important;
+}
+
+#playlist-items.style-scope.ytd-playlist-panel-renderer:hover {
+    transform: translateX(4px);
+    box-shadow: -4px 0px 0px 0px var(--accent), 
+                0 4px 12px rgba(0, 0, 0, 0.2) !important;
+    z-index: 2;
+    background-color: var(--yt-spec-badge-chip-background) !important;
+}
+ 
+/* --- RELATED VIDEOS --- */
+yt-lockup-view-model.ytd-item-section-renderer.lockup.ytLockupViewModelWrapper {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    transition: 0.1s;
+}
+
+yt-lockup-view-model.ytd-item-section-renderer.lockup.ytLockupViewModelWrapper:hover {
+    transform: scale(1.01);
     border: 1px solid var(--accent);
 }
 
-/* search recommendations */
-.ytSearchboxComponentSuggestionsContainer.ytSearchboxComponentSuggestionsContainerDark.ytSearchboxComponentSuggestionsContainerScrollable {
-    background: var(--bg-dark);
-    border: 1px solid var(--border-color);
+.ytThumbnailViewModelHost.ytThumbnailViewModelAspectRatio16By9.ytThumbnailViewModelMedium {
+    border-radius: 0px !important;
 }
 
-.ytSuggestionComponentText:hover {
+.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextText.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextIconButton.ytSpecButtonShapeNextEnableBackdropFilterExperiment {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    padding: 0 !important;
+    transform: translate(-12px, 8px) !important;
+    background-color: var(--bg-panel) !important;
+    border: 1px solid transparent !important;
+    border-radius: 0px !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextText.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextIconButton.ytSpecButtonShapeNextEnableBackdropFilterExperiment:hover {
+    border-color: var(--accent) !important;
     transform: scale(1.1);
 }
-
-.ytSuggestionComponentText {
-    transition: 0.2s;
-}
-
-/* sidebar extended */
-#guide-content.ytd-app, 
-ytd-guide-renderer {
+/* --- SIDEBAR EXTENDED --- */
+#guide-content.ytd-app,
+ytd-guide-renderer,
+ytd-guide-renderer #guide-inner-content {
     background-color: var(--bg-dark) !important;
+    background: var(--bg-dark) !important;
 }
 
 ytd-guide-entry-renderer {
@@ -387,21 +563,42 @@ ytd-guide-entry-renderer:has(a[href^="/shorts"]) {
     display: none !important;
 }
 
-/* notifications */
+/* --- Notis --- */
 ytd-multi-page-menu-renderer {
     background: var(--bg-dark) !important;
+    background-color: var(--bg-dark) !important;
     border: 2px solid var(--border-color) !important;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+    transition: border-color 0.3s ease !important;
     overflow: hidden !important;
 }
 
-/* Glow effect when the menu is active/hovered */
 ytd-multi-page-menu-renderer:hover {
     border-color: var(--accent) !important;
 }
 
-ytd-simple-menu-header-renderer, 
+ytd-simple-menu-header-renderer,
 .style-scope.ytd-multi-page-menu-renderer #header {
     background: var(--bg-panel) !important;
+    background-color: var(--bg-panel) !important;
     border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* --- Over Menus --- */
+ytd-popup-container,
+tp-yt-paper-dialog,
+ytd-menu-popup-renderer {
+    background: var(--bg-dark) !important;
+    background-color: var(--bg-dark) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 0px !important;
+}
+
+/* --- COMENTARIOS --- */
+ytd-comments-header-renderer,
+#comments.ytd-watch-flexy {
+    background-color: var(--bg-main) !important;
+}
+
+ytd-comment-renderer {
+    border: 1px solid var(--border-color) !important;
 }
