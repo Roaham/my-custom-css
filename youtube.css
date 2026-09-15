@@ -1,9 +1,13 @@
-/* ============================================
+/* ================================================================
    YouTube — Catppuccin Mocha Theme
-   Updated: Mayo 2026
-   ============================================ */
+   Updated: September 2026
+   ================================================================ */
 
-/* --- THEME VARIABLES --- */
+
+/* ================================================================
+   1. THEME VARIABLES
+   Defines the color palette and base font used everywhere below.
+   ================================================================ */
 :root,
 html:not(.style-scope),
 ytd-app {
@@ -20,6 +24,7 @@ ytd-app {
     font-family: 'Fira Code', 'JetBrains Mono', monospace !important;
 }
 
+/* Force the main background color across the top-level containers */
 html,
 body,
 ytd-app,
@@ -31,7 +36,8 @@ ytd-two-column-browse-results-renderer {
     background: var(--bg-main) !important;
 }
 
-/* Natives var of yt css */
+/* Remap YouTube's native CSS variables to our theme palette,
+   so any built-in component that uses them picks up the theme too */
 ytd-app {
     --yt-spec-base-background:              var(--bg-main)   !important;
     --yt-spec-raised-background:            var(--bg-panel)  !important;
@@ -51,12 +57,17 @@ ytd-app {
     --yt-spec-10-percent-layer:             rgba(203,166,247,0.1) !important;
 }
 
-/* --- GLOBAL --- */
+
+/* ================================================================
+   2. GLOBAL RESETS
+   Hide scrollbars and flatten rounded corners everywhere
+   (buttons, thumbnails, chips) for the sharp/brutalist look.
+   ================================================================ */
 * {
     scrollbar-width: none !important;
 }
 
-/* border reset (Botones, Miniaturas, Chips) */
+/* Remove border-radius from cards, thumbnails, chips and buttons */
 ytd-rich-item-renderer,
 ytd-mini-guide-entry-renderer,
 ytd-guide-entry-renderer,
@@ -75,7 +86,8 @@ ytd-button-renderer a {
     border-radius: 0px !important;
 }
 
-/* Interactuable */
+/* Strip YouTube's modern "pill" touch-feedback shapes/clip-paths
+   from interactive elements so our square style isn't overridden */
 yt-interaction,
 yt-interaction *,
 .yt-interaction,
@@ -95,7 +107,11 @@ yt-interaction *,
     --yt-fab-border-radius: 0px !important;
 }
 
-/* TIPOGRAPHY */
+
+/* ================================================================
+   3. TYPOGRAPHY
+   Apply the monospace font and text color to all text elements.
+   ================================================================ */
 span, p, h1, h2, h3,
 #video-title,
 #content-text,
@@ -106,32 +122,16 @@ yt-formatted-string,
     color: var(--text-main) !important;
 }
 
+/* Bold text uses the accent color instead of pure white */
 b, strong {
     color: var(--accent) !important;
 }
 
-/* 4. ELEMENTOS ESPECÍFICOS DE LA INTERFAZ */
-/* Feed filter bar */
-div.style-scope.ytd-feed-filter-chip-bar-renderer,
-#chips-wrapper.ytd-feed-filter-chip-bar-renderer {
-    background: var(--bg-main) !important;
-}
 
-yt-chip-cloud-chip-renderer {
-    border-radius: 0px !important;
-}
-
-/* YouTube logo */
-path[fill="#FF0033"] {
-    fill: var(--accent) !important;
-}
-
-#container.ytd-searchbox,
-#search-icon-legacy.ytd-searchbox {
-    border-radius: 0px !important;
-}
-
-/* --- HIDE SHORTS --- */
+/* ================================================================
+   4. HIDE SHORTS
+   Removes Shorts shelves, sidebar entries and video-grid tiles.
+   ================================================================ */
 ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
 ytd-reel-shelf-renderer,
 ytd-rich-shelf-renderer[is-shorts],
@@ -142,37 +142,40 @@ ytd-video-renderer:has([overlay-style="SHORTS"]) {
     display: none !important;
 }
 
-/* --- VIDEO GRID --- */
-/* New Layout */
+
+/* ================================================================
+   5. HOME VIDEO GRID
+   Forces a 3-column layout and styles each video card
+   with a bordered panel + hover lift effect.
+   ================================================================ */
 #contents.ytd-rich-grid-renderer {
     display: flex !important;
     flex-wrap: wrap !important;
+    gap: 0.5%;
 }
 
 ytd-rich-item-renderer {
     margin: 0 !important;
     padding: 8px !important;
     box-sizing: border-box !important;
-    width: 33.33% !important;
-    min-width: 33.33% !important;
-    max-width: 33.33% !important;
-    --ytd-rich-grid-items-per-row: 3 !important;
+    width: 24.5% !important;
+    min-width: 24.5% !important;
+    max-width: 24.5% !important;
+    --ytd-rich-grid-items-per-row: 4 !important;
     background-color: var(--bg-panel) !important;
-    border: 1px solid var(--border-color) !important;
     margin-bottom: 12px !important;
     transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+    border: 2px solid var(--border-color) !important;
 }
 
 ytd-rich-item-renderer:hover {
-    border: 1px solid var(--accent) !important;
+    border: 2px solid var(--accent) !important;
     background-color: var(--bg-surface) !important;
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3) !important;
-    z-index: 10;
-    
+    z-index: 1;
 }
 
-/* remove overlay */
+/* Remove YouTube's default hover overlay shapes on thumbnails/cards,
+   since our own hover effect (above) replaces them */
 yt-touch-feedback-shape .ytSpecTouchFeedbackShapeHoverEffect,
 yt-touch-feedback-shape .ytSpecTouchFeedbackShapeFill,
 yt-touch-feedback-shape .ytSpecTouchFeedbackShapeStroke {
@@ -186,12 +189,17 @@ yt-interaction.yt-interaction .fill {
     display: none !important;
 }
 
-/* --- NAVBAR LATERAL MINI --- */
+
+/* ================================================================
+   6. MINI SIDEBAR (collapsed left nav icons)
+   Icon-only nav with hover glow and an accent side-marker.
+   ================================================================ */
 ytd-mini-guide-renderer {
     background: var(--bg-dark) !important;
     background-color: var(--bg-dark) !important;
 }
 
+/* Hide the text label under each icon, icon-only look */
 ytd-mini-guide-entry-renderer .title {
     display: none !important;
 }
@@ -221,10 +229,10 @@ ytd-mini-guide-entry-renderer:hover {
     transform: scale(1.1);
     background-color: var(--bg-panel) !important;
     border-color: var(--accent) !important;
-    box-shadow: 0 0 15px var(--accent-glow) !important;
     z-index: 10 !important;
 }
 
+/* Accent bar that slides in on the left edge of the icon on hover */
 ytd-mini-guide-entry-renderer::after {
     content: "";
     position: absolute;
@@ -254,13 +262,24 @@ ytd-mini-guide-entry-renderer:hover .yt-spec-icon-shape {
     color: var(--accent) !important;
 }
 
+/* Generic icon coloring fallback */
 mat-icon, .yt-spec-icon-shape {
     color: var(--text-main) !important;
     transition: color 0.3s ease !important;
 }
 
-/* --- CHIPS --- */
+
+/* ================================================================
+   7. FILTER CHIPS
+   The category chips row shown above the home feed / search results.
+   ================================================================ */
+div.style-scope.ytd-feed-filter-chip-bar-renderer,
+#chips-wrapper.ytd-feed-filter-chip-bar-renderer {
+    background: var(--bg-main) !important;
+}
+
 yt-chip-cloud-chip-renderer {
+    border-radius: 0px !important;
     background: var(--bg-panel) !important;
     border: 1px solid var(--border-color) !important;
     transition: all 0.2s ease-in-out !important;
@@ -278,6 +297,7 @@ yt-chip-cloud-chip-renderer:hover {
     cursor: pointer;
 }
 
+/* Currently selected chip is filled solid with the accent color */
 yt-chip-cloud-chip-renderer[selected] {
     text-transform: uppercase !important;
     background-color: var(--accent) !important;
@@ -298,8 +318,10 @@ yt-chip-cloud-chip-renderer[selected] div.ytChipShapeChip {
     border: none !important;
 }
 
-/* --- TOPBAR / MASTHEAD --- */
-/* more capes for the header xd */
+
+/* ================================================================
+   8. TOP BAR (masthead) & SEARCH BAR
+   ================================================================ */
 #masthead-container.ytd-app,
 ytd-masthead,
 #background.ytd-masthead,
@@ -316,14 +338,22 @@ tp-yt-app-header-layout,
 
 #masthead-container.ytd-app:hover {
     border-color: var(--accent) !important;
-    box-shadow: 0 4px 15px -5px var(--accent-glow) !important;
 }
 
 .ytSpecButtonShapeNextHost.ytSpecButtonShapeNextTonal.ytSpecButtonShapeNextOverlay.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextIconLeading.ytSpecButtonShapeNextEnableBackdropFilterExperiment {
     border-radius: 0px !important;
 }
 
-/* --- SEARCHBAR --- */
+/* YouTube logo mark recolored to the accent */
+path[fill="#FF0033"] {
+    fill: var(--accent) !important;
+}
+
+#container.ytd-searchbox,
+#search-icon-legacy.ytd-searchbox {
+    border-radius: 0px !important;
+}
+
 .ytSearchboxComponentInputContainer {
     background-color: var(--bg-panel) !important;
     border: 1px solid var(--border-color) !important;
@@ -360,103 +390,167 @@ input.ytSearchboxComponentInput {
     background-color: var(--accent) !important;
 }
 
+/* Hide the voice search microphone button */
 #voice-search-button {
     display: none !important;
 }
-
-/* no voice search */
 .yt-spec-button-shape-next--tonal.yt-spec-button-shape-next--overlay {
     display: none !important;
 }
 
-/* --- VIDEOPAGE --- */
+
+/* ================================================================
+   9. WATCH PAGE — PLAYER & CONTROLS
+   ================================================================ */
+
+/* Disable the animated background "cinematics" effect behind the player */
 #cinematics-container,
 #cinematics canvas {
     display: none !important;
 }
 
-/* suscribe button */
-.ytSmartImationsContent #subscribe-button-shape button,
-.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextFilled.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextEnableBackdropFilterExperiment {
-    background: var(--bg-panel) !important;
-    background-color: var(--bg-panel) !important;
-    color: var(--yt-spec-text-primary) !important;
-    border: 1px solid var(--yt-spec-10-percent-layer) !important;
+/* Player container frame */
+#player-container-outer.style-scope.ytd-watch-flexy {
     border-radius: 0px !important;
-    transition: 
-        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
-        box-shadow 0.2s ease, 
-        border-color 0.2s ease !important;
-    
+    border: 1px solid var(--border-color) !important;
+    transition: border 0.1s;
+    background-color: var(--bg-dark) !important;
+    overflow: hidden;
+}
+
+#ytd-player.style-scope.ytd-watch-flexy {
+    border-radius: 0px !important;
+    box-shadow: none !important;
+}
+
+#player-container-outer.style-scope.ytd-watch-flexy:hover {
+    border: 2px solid var(--accent) !important;
+}
+
+/* Progress bar / scrubber */
+.ytp-scrubber-button {
+    background-color: var(--accent) !important;
+    border-radius: 0px !important;
+    width: 14px !important;
+    height: 14px !important;
+    transition: transform 0.1s ease-in-out;
+}
+
+.ytp-play-progress {
+    background: var(--accent) !important;
+}
+
+/* Hide the circular drag indicator that appears above the scrubber */
+.ytp-scrubber-pull-indicator {
+    display: none !important;
+}
+
+.ytp-hover-progress {
+    background-color: var(--accent) !important;
+    opacity: 0.3 !important;
+}
+
+.ytp-progress-list {
+    background-color: var(--bg-dark) !important;
+}
+
+.ytp-load-progress {
+    background-color: var(--border-color) !important;
+    opacity: 0.5 !important;
+}
+
+
+/* ================================================================
+   10. WATCH PAGE — SUBSCRIBE / LIKE / DESCRIPTION
+   ================================================================ */
+
+/* Subscribe button: flat panel with a "hard shadow" pop on hover */
+:is(
+    .ytSmartImationsContent #subscribe-button-shape button,
+    .ytSpecButtonShapeNextHost.ytSpecButtonShapeNextFilled.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextEnableBackdropFilterExperiment
+) {
+    background: var(--bg-panel) !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 0px !important;
     height: 32px !important;
     padding: 0 16px !important;
-}
-
-.ytSmartImationsContent #subscribe-button-shape button:hover,
-.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextFilled.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextEnableBackdropFilterExperiment:hover {
-    border-color: var(--accent) !important;
-    transform: translate(-5px, 5px) !important;    
-    box-shadow: 4px -4px 0px 0px var(--accent) !important;
-}
-
-.ytSmartImationsContent #subscribe-button-shape .ytSpecButtonShapeNextButtonTextContent,
-.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextFilled.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextEnableBackdropFilterExperiment {
     font-size: 13px !important;
     font-weight: 500 !important;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    transition:
+        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.2s ease,
+        border-color 0.2s ease !important;
 }
 
+:is(
+    .ytSmartImationsContent #subscribe-button-shape button,
+    .ytSpecButtonShapeNextHost.ytSpecButtonShapeNextFilled.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextEnableBackdropFilterExperiment
+):hover {
+    border-color: var(--accent) !important;
+    transform: translate(-5px, 5px) !important;
+    box-shadow: 4px -4px 0px 0px var(--accent) !important;
+}
+
+/* Hide the built-in Lottie animation on the subscribe button */
 .ytSmartImationsContent .ytAnimatedActionLottie {
     display: none !important;
 }
- 
-/* Buttons of like/dislike/share */
+
+/* Like / Dislike / Share buttons */
 #actions-inner.ytd-watch-metadata,
 #actions-inner.ytd-watch-metadata * {
     border-radius: 0px !important;
 }
 
-#actions-inner.ytd-watch-metadata yt-button-shape,
-#actions-inner.ytd-watch-metadata .yt-spec-button-shape-next,
-#actions-inner.ytd-watch-metadata segmented-like-dislike-button-view-model {
+#actions-inner.ytd-watch-metadata :is(
+    yt-button-shape,
+    .yt-spec-button-shape-next,
+    segmented-like-dislike-button-view-model
+) {
     border-radius: 0px !important;
-    border: 1px solid transparent; /* Reserva el espacio para el borde */
+    border: 1px solid transparent;
     transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-#actions-inner.ytd-watch-metadata yt-button-shape:hover,
-#actions-inner.ytd-watch-metadata .yt-spec-button-shape-next:hover,
-#actions-inner.ytd-watch-metadata segmented-like-dislike-button-view-model:hover {
+#actions-inner.ytd-watch-metadata :is(
+    yt-button-shape,
+    .yt-spec-button-shape-next,
+    segmented-like-dislike-button-view-model
+):hover {
     border-color: var(--accent) !important;
     background-color: var(--bg-surface) !important;
     cursor: pointer;
 }
- 
-/* Description */
-#description.ytd-watch-metadata {
+
+/* Description box + metadata carousel */
+:is(
+    #description.ytd-watch-metadata,
+    yt-video-metadata-carousel-view-model.ytVideoMetadataCarouselViewModelHost
+) {
     border: 2px solid transparent !important;
-    transition: all 0.2s ease;
     border-radius: 0px;
+    transition: all 0.2s ease;
 }
- 
-#description.ytd-watch-metadata:hover {
+
+:is(
+    #description.ytd-watch-metadata,
+    yt-video-metadata-carousel-view-model.ytVideoMetadataCarouselViewModelHost
+):hover {
     border-color: var(--accent) !important;
     background-color: var(--bg-surface) !important;
 }
 
-yt-video-metadata-carousel-view-model.ytVideoMetadataCarouselViewModelHost {
-    border: 2px solid transparent !important;
-    transition: all 0.2s ease;
-    border-radius: 0px;
+.style-scope.ytd-item-section-renderer {
+        background-color: var(--border) !important;
 }
 
-yt-video-metadata-carousel-view-model.ytVideoMetadataCarouselViewModelHost:hover {
-    border-color: var(--accent) !important;
-    background-color: var(--bg-surface) !important;
-}
- 
-/* Lateral Playlist */
+
+/* ================================================================
+   11. WATCH PAGE — PLAYLIST PANEL & MINIPLAYER
+   ================================================================ */
 ytd-playlist-panel-renderer,
 .style-scope.ytd-playlist-panel-renderer {
     background: var(--bg-panel) !important;
@@ -476,53 +570,79 @@ ytd-playlist-panel-renderer:hover {
 }
 
 #playlist-items.style-scope.ytd-playlist-panel-renderer {
-    transition: 
-        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
-        box-shadow 0.2s ease, 
+    transition:
+        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.2s ease,
         border-color 0.2s ease !important;
 }
 
 #playlist-items.style-scope.ytd-playlist-panel-renderer:hover {
     transform: translateX(4px);
-    box-shadow: -4px 0px 0px 0px var(--accent), 
+    box-shadow: -4px 0px 0px 0px var(--accent),
                 0 4px 12px rgba(0, 0, 0, 0.2) !important;
     z-index: 2;
     background-color: var(--yt-spec-badge-chip-background) !important;
 }
- 
-/* --- RELATED VIDEOS --- */
+
+.ytdMiniplayerComponentContent {
+    border-radius: 0px !important;
+    border: 2px solid var(--border-color) !important;
+    transition: 0.1s;
+}
+
+.ytdMiniplayerComponentContent:hover {
+    border: 1px solid var(--accent) !important;
+}
+
+.ytdMiniplayerInfoBarHost.ytdMiniplayerInfoBarHasPlaylistData {
+    background-color: var(--bg-main);
+}
+
+
+/* ================================================================
+   12. RELATED VIDEOS SIDEBAR
+   ================================================================ */
 yt-lockup-view-model.ytd-item-section-renderer.lockup.ytLockupViewModelWrapper {
     background: var(--bg-panel);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     transition: 0.1s;
 }
 
 yt-lockup-view-model.ytd-item-section-renderer.lockup.ytLockupViewModelWrapper:hover {
     transform: scale(1.01);
-    border: 1px solid var(--accent);
+    border: 2px solid var(--accent);
 }
 
-.ytThumbnailViewModelHost.ytThumbnailViewModelAspectRatio16By9.ytThumbnailViewModelMedium {
+.ytThumbnailViewModelLarge {
     border-radius: 0px !important;
 }
 
+/* The "..." (more actions) icon button on each related-video card */
 .ytSpecButtonShapeNextHost.ytSpecButtonShapeNextText.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextIconButton.ytSpecButtonShapeNextEnableBackdropFilterExperiment {
     width: 20px !important;
     height: 20px !important;
     min-width: 20px !important;
     padding: 0 !important;
-    transform: translate(-12px, 8px) !important;
     background-color: var(--bg-panel) !important;
     border: 1px solid transparent !important;
     border-radius: 0px !important;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transform: scale(1.2);
 }
+.ytSpecButtonViewModelHost {
+        background: var(--bg-panel) !important;
+}
+
 
 .ytSpecButtonShapeNextHost.ytSpecButtonShapeNextText.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextIconButton.ytSpecButtonShapeNextEnableBackdropFilterExperiment:hover {
     border-color: var(--accent) !important;
-    transform: scale(1.1);
 }
-/* --- SIDEBAR EXTENDED --- */
+
+
+
+/* ================================================================
+   13. EXPANDED SIDEBAR (left guide menu)
+   ================================================================ */
 #guide-content.ytd-app,
 ytd-guide-renderer,
 ytd-guide-renderer #guide-inner-content {
@@ -554,16 +674,21 @@ ytd-guide-entry-renderer .title {
     font-size: 14px !important;
 }
 
+/* The little "new" notification dot next to a guide entry */
 #newness-dot.ytd-guide-entry-renderer {
     background-color: var(--accent) !important;
 }
 
+/* Hide "Shorts" entry in the expanded sidebar too */
 ytd-guide-entry-renderer:has(a[title="Shorts"]),
 ytd-guide-entry-renderer:has(a[href^="/shorts"]) {
     display: none !important;
 }
 
-/* --- Notis --- */
+
+/* ================================================================
+   14. POPUPS, MENUS & NOTIFICATIONS
+   ================================================================ */
 ytd-multi-page-menu-renderer {
     background: var(--bg-dark) !important;
     background-color: var(--bg-dark) !important;
@@ -583,7 +708,6 @@ ytd-simple-menu-header-renderer,
     border-bottom: 1px solid var(--border-color) !important;
 }
 
-/* --- Over Menus --- */
 ytd-popup-container,
 tp-yt-paper-dialog,
 ytd-menu-popup-renderer {
@@ -593,7 +717,15 @@ ytd-menu-popup-renderer {
     border-radius: 0px !important;
 }
 
-/* --- COMMENTS --- */
+/* Loading spinner recolored to the accent */
+.spinner-layer.style-scope.tp-yt-paper-spinner-lite {
+    border-color: var(--accent) !important;
+}
+
+
+/* ================================================================
+   15. COMMENTS SECTION
+   ================================================================ */
 ytd-comments-header-renderer,
 #comments.ytd-watch-flexy {
     background-color: var(--bg-main) !important;
@@ -603,71 +735,10 @@ ytd-comment-renderer {
     border: 1px solid var(--border-color) !important;
 }
 
-/* yt miniplayer */
-.ytdMiniplayerComponentContent {
-    border-radius: 0px !important;
-    border: 2px solid var(--border-color) !important;
-    transition: 0.1s;
-}
 
-.ytdMiniplayerComponentContent:hover {
-    border: 1px solid var(--accent) !important;
-}
-
-.ytdMiniplayerInfoBarHost.ytdMiniplayerInfoBarHasPlaylistData {
-    background-color: var(--bg-main);
-}
-
-/* --- PLAYER CONTAINER (WATCH VIEW) --- */
-#player-container-outer.style-scope.ytd-watch-flexy {
-    border-radius: 0px !important;
-    border: 1px solid var(--border-color) !important;
-    transition: border 0.1s;
-    background-color: var(--bg-dark) !important;
-    overflow: hidden;
-}
-
-#ytd-player.style-scope.ytd-watch-flexy {
-    border-radius: 0px !important;
-    box-shadow: none !important;
-}
-
-#player-container-outer.style-scope.ytd-watch-flexy:hover {
-    border: 2px solid var(--accent) !important;
-}
-
-/* --- PROGRESS BAR & SCRUBBER --- */
-.ytp-scrubber-button {
-    background-color: var(--accent) !important;
-    border-radius: 0px !important;
-    width: 14px !important;
-    height: 14px !important;
-    transition: transform 0.1s ease-in-out;
-}
-
-.ytp-play-progress {
-    background: var(--accent) !important;
-}
-
-.ytp-scrubber-pull-indicator {
-    display: none !important;
-}
-
-.ytp-hover-progress {
-    background-color: var(--accent) !important;
-    opacity: 0.3 !important;
-}
-
-.ytp-progress-list {
-    background-color: var(--bg-dark) !important;
-}
-
-.ytp-load-progress {
-    background-color: var(--border-color) !important;
-    opacity: 0.5 !important;
-}
-
-/* --- CHANNEL HEADER ADAPTATION --- */
+/* ================================================================
+   16. CHANNEL PAGE — HEADER & TABS
+   ================================================================ */
 .style-scope.ytd-tabbed-page-header {
     background-color: var(--bg-main) !important;
     background: var(--bg-main) !important;
@@ -682,9 +753,8 @@ tp-yt-app-toolbar.style-scope.ytd-tabbed-page-header {
     display: none !important;
 }
 
-
-/* --- CHANNEL TABS OPTIMIZED --- */
-
+/* Hide YouTube's default tab-bar underline/slider,
+   since we build a custom one below */
 #selectionBar,
 .ytTabShapeTabBar,
 .ytTabShapeTabBarSelected,
@@ -695,7 +765,7 @@ tp-yt-app-toolbar.style-scope.ytd-tabbed-page-header {
     pointer-events: none !important;
 }
 
-/* BASE TAB ARCHITECTURE */
+/* Base tab structure */
 yt-tab-shape {
     position: relative !important;
     border-radius: 0 !important;
@@ -716,7 +786,7 @@ yt-tab-shape {
     z-index: 5;
 }
 
-/* The Top Accent Line */
+/* Custom accent line across the top of the active tab */
 yt-tab-shape::before {
     content: "";
     position: absolute;
@@ -731,7 +801,7 @@ yt-tab-shape::before {
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* The Corner Block (Brutalist Style) */
+/* Small triangular corner block for a brutalist accent on hover/active */
 yt-tab-shape::after {
     content: "";
     position: absolute;
@@ -740,15 +810,13 @@ yt-tab-shape::after {
     width: 8px;
     height: 8px;
     background-color: var(--accent);
-    /* Using clip-path for sharper geometric precision than borders */
     clip-path: polygon(0 0, 100% 0, 0 100%);
     opacity: 0;
     z-index: 11;
     transition: opacity 0.1s ease;
 }
 
-
-/* Active State */
+/* Active tab state */
 yt-tab-shape[aria-selected="true"]::before {
     transform: scaleX(1);
     box-shadow: 0 0 10px var(--accent-glow);
@@ -759,7 +827,7 @@ yt-tab-shape:hover::after {
     opacity: 1;
 }
 
-/* Hover State */
+/* Hover state */
 yt-tab-shape:hover {
     background-color: var(--bg-panel) !important;
 }
@@ -779,45 +847,43 @@ ytd-expandable-tab-renderer:hover yt-icon {
     filter: drop-shadow(0 0 5px var(--accent-glow));
 }
 
-/* LOADING */
-.spinner-layer.style-scope.tp-yt-paper-spinner-lite {
-  border-color: var(--accent) !important;
-}
 
-/* --- 1. VIDEO PLAYER: CLEAN & BOLD --- */
+/* ================================================================
+   17. CHANNEL PAGE — VIDEO PLAYER & SECTIONS
+   ================================================================ */
+
+/* Featured/channel video player: bold border + retro offset shadow */
 ytd-channel-video-player-renderer {
     margin: 32px 0 !important;
     padding: 24px !important;
-    background: rgba(255, 255, 255, 0.03) !important; /* Subtle glass effect */
-    border: 2px solid var(--accent) !important; /* Thicker accent border */
-    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.5) !important; /* Retro-tech offset shadow */
+    background: rgba(255, 255, 255, 0.03) !important; /* subtle glass effect */
+    border: 2px solid var(--accent) !important;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.5) !important; /* retro-tech offset shadow */
 }
 
-/* --- 2. SECTION CONTAINERS: GLASS & FOCUS --- */
+/* Section containers (e.g. "Uploads", "Popular videos") */
 ytd-item-section-renderer {
     margin-bottom: 60px !important;
     padding: 30px !important;
     border-top: 1px solid var(--border-color) !important;
     border-bottom: 1px solid var(--border-color) !important;
-    /* Clean background without the grid squares */
     background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%) !important;
 }
 
-/* --- 3. BOLD TITLES (ACRECENTADOS) --- */
-#title-container.ytd-grid-renderer, 
+/* Large bold section titles with a decorative line trailing off to the right */
+#title-container.ytd-grid-renderer,
 h2.ytd-item-section-header-renderer {
     font-family: 'Fira Code', monospace !important;
-    font-size: 28px !important; /* Large scale title */
+    font-size: 28px !important;
     font-weight: 800 !important;
     text-transform: uppercase !important;
-    letter-spacing: -1px !important; /* Modern tight spacing */
+    letter-spacing: -1px !important;
     color: var(--text-main) !important;
     margin-bottom: 35px !important;
     display: flex !important;
     align-items: center !important;
 }
 
-/* Decorative line next to the title */
 #title-container.ytd-grid-renderer::after,
 h2.ytd-item-section-header-renderer::after {
     content: "";
@@ -828,7 +894,7 @@ h2.ytd-item-section-header-renderer::after {
     opacity: 0.5;
 }
 
-/* --- VIDEO CARD ENHANCEMENTS --- */
+/* Video cards inside channel page horizontal shelves */
 .yt-horizontal-list-renderer.lockup.ytLockupViewModelWrapper {
     font-size: 16px !important;
     font-weight: 600 !important;
@@ -841,4 +907,106 @@ h2.ytd-item-section-header-renderer::after {
 
 .yt-horizontal-list-renderer.lockup.ytLockupViewModelWrapper:hover {
     border: 1px solid var(--accent) !important;
+}
+
+.ytSearchboxComponentSuggestionsContainer.ytSearchboxComponentSuggestionsContainerScrollable {
+    border-radius: 0px;
+    background-color: var(--bg-panel);
+    border: 2px solid var(--border-color);
+    transition: 0.1s;
+    gap: 10px;
+}
+
+.ytSearchboxComponentSuggestionsContainer.ytSearchboxComponentSuggestionsContainerScrollable:hover {
+    border-color: var(--accent);
+}
+
+.ytSuggestionComponentSuggestion {
+    border-radius: 0 !important;
+    background-color: var(--bg-panel, #222) !important;
+    transition: 0.1s !important;
+}
+
+.ytSuggestionComponentSuggestion:hover {
+    transform: scale(1.05);
+}
+
+ytd-guide-section-renderer:has(a[href="/premium"]) {
+    display: none !important;
+}
+
+#guide-links-primary, #guide-links-secondary {
+    display: none !important;
+}
+
+.immersive-header-background-wrapper.style-scope.ytd-playlist-header-renderer {
+    background-color: var(--bg-main) !important;
+}
+
+.immersive-header-gradient.style-scope.ytd-playlist-header-renderer {
+    display: none !important;
+    border-radius: 0px;
+}
+
+.style-scope.ytd-hero-playlist-thumbnail-renderer {
+    border-radius: 0px;
+}
+
+.blurred-image.style-scope.ytd-playlist-header-renderer.no-transition {
+    display: none;
+    
+}
+
+ytd-button-renderer.play-button.style-scope.ytd-playlist-header-renderer a.ytSpecButtonShapeNextHost {
+    background-color: var(--bg-surface) !important;
+    border-radius: 0px !important;
+    border: 2px solid var(--border-color, #000000) !important;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+ytd-button-renderer.play-button.style-scope.ytd-playlist-header-renderer a.ytSpecButtonShapeNextHost * {
+    color: var(--text-main) !important;
+    fill: var(--text-main) !important;
+}
+
+ytd-button-renderer.play-button.style-scope.ytd-playlist-header-renderer a.ytSpecButtonShapeNextHost:hover {
+    border-color: var(--accent) !important;
+}
+
+ytd-playlist-video-renderer.style-scope.ytd-playlist-video-list-renderer {
+    border: 2px solid var(--border-color);
+    border-radius: 0px;
+    padding: 5px;
+    transition: 0.1s;
+}
+
+ytd-playlist-video-renderer.style-scope.ytd-playlist-video-list-renderer:hover {
+    border-color: var(--accent);
+}
+
+/* ================================================================
+   7. FILTER CHIPS (Updated for new YouTube Web Components)
+   ================================================================ */
+
+chip-bar-view-model.ytChipBarViewModelHost chip-shape {
+    border-radius: 0px !important;
+    background: var(--bg-panel) !important;
+    border: 1px solid var(--border-color) !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+chip-bar-view-model.ytChipBarViewModelHost chip-shape:hover {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--accent) !important;
+}
+
+chip-bar-view-model.ytChipBarViewModelHost chip-shape:has(button[aria-selected="true"]) {
+    text-transform: uppercase !important;
+    background-color: var(--accent) !important;
+    border-color: var(--accent) !important;
+}
+
+chip-bar-view-model.ytChipBarViewModelHost chip-shape:has(button[aria-selected="true"]) .ytChipShapeChip {
+    text-transform: uppercase !important;
+    color: var(--bg-dark) !important;
 }
