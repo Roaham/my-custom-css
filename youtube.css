@@ -1,6 +1,7 @@
 /* ================================================================
    YouTube — Catppuccin Mocha Theme
-   Updated: September 2026
+   Updated: Mayo 2026
+   Refactored: Sep 2026 (reorganized + commented, no behavior changes)
    ================================================================ */
 
 
@@ -623,6 +624,7 @@ yt-lockup-view-model.ytd-item-section-renderer.lockup.ytLockupViewModelWrapper:h
     height: 20px !important;
     min-width: 20px !important;
     padding: 0 !important;
+    translate: -30px 0;
     background-color: var(--bg-panel) !important;
     border: 1px solid transparent !important;
     border-radius: 0px !important;
@@ -1009,4 +1011,24 @@ chip-bar-view-model.ytChipBarViewModelHost chip-shape:has(button[aria-selected="
 chip-bar-view-model.ytChipBarViewModelHost chip-shape:has(button[aria-selected="true"]) .ytChipShapeChip {
     text-transform: uppercase !important;
     color: var(--bg-dark) !important;
+}
+
+ytd-live-chat-frame {
+    border: 2px solid var(--border-color);
+    border-radius: 0px !important;
+    background-color: var(--bg-panel) !important;
+    transition: 0.1s;
+}
+
+ytd-live-chat-frame:hover {
+    border: 2px solid var(--accent);
+}
+
+yt-live-chat-header-renderer, yt-live-chat-text-message-renderer, yt-live-chat-message-input-renderer, .style-scope.yt-live-chat-item-list-renderer {
+    background-color: var(--bg-panel) !important;
+    
+}
+
+.style-scope.yt-live-chat-message-input-renderer {
+    border-radius: 0px !important;
 }
