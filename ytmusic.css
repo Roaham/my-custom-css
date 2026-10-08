@@ -59,20 +59,20 @@ span {
 /* Searchbox */
 div.search-box.style-scope.ytmusic-search-box {
     border-radius: 0px !important;
-    border: 1px solid var(--accent) !important;
+    border: 2px solid var(--accent) !important;
     background-color: var(--bg-main) !important;
 }
 
 /* Suggestions searchbox */
 div#suggestion-list.style-scope.ytmusic-search-box {
     background-color: var(--bg-main) !important;
-    border: 1px solid var(--accent) !important;
+    border: 2px solid var(--accent) !important;
     border-radius: 0px !important;
 }
 
 /* Suggestion up */
 div#suggestions.style-scope.ytmusic-search-suggestions-section {
-    border-bottom: 1px dotted var(--border-color) !important;
+    border-bottom: 2px dotted var(--border-color) !important;
     background-color: var(--bg-main) !important;
     border-radius: 0px !important;
 }
@@ -81,7 +81,7 @@ div#suggestions.style-scope.ytmusic-search-suggestions-section {
 ytmusic-search-suggestion {
     background-color: var(--bg-main) !important;
     color: var(--text-main) !important;
-    transition: 0.2s !important;
+    transition: 0.1s !important;
 }
 
 /* Hover suggestions */
@@ -93,9 +93,9 @@ ytmusic-search-suggestion:hover {
 /* music categories */
 a.yt-simple-endpoint.style-scope.ytmusic-chip-cloud-chip-renderer {
     border-radius: 0px !important;
-    border: 1px solid var(--accent) !important;
+    border: 2px solid var(--accent) !important;
     background-color: var(--bg-main) !important;
-    transition: 0.2s !important;
+    transition: 0.1s !important;
     text-decoration: underline transparent 4px !important;
     text-underline-offset: 5px !important;
 }
@@ -118,9 +118,9 @@ a.yt-simple-endpoint.style-scope.ytmusic-chip-cloud-chip-renderer[focused] {
 
 button.yt-spec-button-shape-next.yt-spec-button-shape-next--outline.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--enable-backdrop-filter-experiment {
     border-radius: 0px !important;
-    border: 1px solid var(--accent) !important;
+    border: 2px solid var(--accent) !important;
     background-color: var(--bg-main) !important;
-    transition: 0.2s !important;
+    transition: 0.1s !important;
     text-decoration: underline transparent 4px !important;
     text-underline-offset: 5px !important;
 }
@@ -141,14 +141,21 @@ ytmusic-thumbnail-renderer {
 }
 
 /* movements buttons */
-yt-icon-button {
+ytmusic-nav-bar .left-content.ytmusic-nav-bar yt-icon-button.ytmusic-nav-bar {
     border-radius: 0px !important;
     background-color: var(--bg-main) !important;
-    transition: 0.3s !important;
+    transition: 0.1s !important;
+    border: 2px solid transparent !important;
 }
 
-yt-icon-button:hover {
-    border: 1px solid var(--accent) !important;
+ytmusic-nav-bar .left-content.ytmusic-nav-bar yt-icon-button.ytmusic-nav-bar:hover {
+    border: 2px solid var(--accent) !important;
+}
+
+ytmusic-nav-bar .left-content.ytmusic-nav-bar yt-icon-button.ytmusic-nav-bar button#button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* top nd lateral menus */
@@ -178,13 +185,13 @@ ytmusic-nav-bar:hover {
 
 /* music cards */
 ytmusic-two-row-item-renderer {
-    transition: all 0.2s ease !important;
-    border: 1px solid transparent !important;
+    transition: all 0.1s ease !important;
+    border: 2px solid transparent !important;
 }
 
 ytmusic-two-row-item-renderer:hover {
     background-color: var(--bg-surface) !important;
-    border: 1px solid var(--accent) !important;
+    border: 2px solid var(--accent) !important;
     box-shadow: 4px 4px 0px var(--bg-dark) !important;
 }
 
@@ -212,9 +219,9 @@ tp-yt-paper-item[focused] {
 /* button new playlist */
 button.yt-spec-button-shape-next.yt-spec-button-shape-next--tonal.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--icon-leading.yt-spec-button-shape-next--enable-backdrop-filter-experiment {
     border-radius: 0px !important;
-    border: 1px solid var(--accent) !important;
+    border: 2px solid var(--accent) !important;
     background-color: var(--bg-dark) !important;
-    transition: 0.2s !important;
+    transition: 0.1s !important;
 }
 
 button.yt-spec-button-shape-next.yt-spec-button-shape-next--tonal.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--icon-leading.yt-spec-button-shape-next--enable-backdrop-filter-experiment:hover {
@@ -226,9 +233,9 @@ button.yt-spec-button-shape-next.yt-spec-button-shape-next--tonal.yt-spec-button
 /* explore buttons */
 button.style-scope.ytmusic-navigation-button-renderer {
     border-radius: 0px !important;
-    border: 1px solid var(--accent) !important;
+    border: 2px solid var(--accent) !important;
     background-color: var(--bg-main) !important;
-    transition: 0.2s !important;
+    transition: 0.1s !important;
     text-decoration: underline transparent 4px !important;
     text-underline-offset: 5px !important;
 }
@@ -240,14 +247,14 @@ button.style-scope.ytmusic-navigation-button-renderer:hover {
 
 /* player */
 div.content.style-scope.ytmusic-player-page {
-    border: 1px solid var(--accent) !important;
+    border: 2px solid var(--accent) !important;
     background-color: var(--bg-main) !important;
     position: relative;
     overflow: hidden;
 }
 
 div.content.style-scope.ytmusic-player-page {
-    border: 1px solid var(--accent) !important;
+    border: 0px solid var(--accent) !important;
     background-color: var(--bg-main) !important;
     position: relative !important;
     overflow: hidden !important;
@@ -279,6 +286,10 @@ div.content.style-scope.ytmusic-player-page::before {
     box-shadow: 0 0 8px var(--accent);
     animation: blink 1.5s infinite steps(1);
     z-index: 10;
+}
+
+ytmusic-player {
+    border-radius: 0px !important;
 }
 
 @keyframes scanning {
@@ -482,4 +493,82 @@ ytmusic-logo a.yt-simple-endpoint:hover::after {
     border: 2px solid white !important; 
     transform: scale(1.1) !important;
     transition: all 0.2s ease-in-out !important;
+}
+
+.style-scope.ytmusic-settings-button {
+    border-radius: 0px !important;
+}
+
+/* Artist */
+.gradient-container.style-scope.ytmusic-visual-header-renderer {
+    background: var(--bg-main) !important;
+}
+
+/* share channel button*/
+button[aria-label="Share"] {
+    border-radius: 0px !important;
+    background: var(--bg-panel) !important;
+    border: 2px solid var(--border-color);
+    transition: 0.1s;
+}
+
+button[aria-label="Share"]:hover {
+    border-color: var(--accent) !important;
+}
+
+/* mix channel button */
+button[aria-label="Mix"] {
+    border-radius: 0px !important;
+    background: var(--bg-panel) !important;
+    border: 2px solid var(--border-color);
+    transition: 0.1s;
+}
+
+button[aria-label="Mix"]:hover {
+    border-color: var(--accent) !important;
+}
+
+/* shuffle chanel button */
+button[aria-label="Shuffle"] {
+    border-radius: 0px !important;
+    background: var(--bg-panel) !important;
+    border: 2px solid var(--border-color);
+    transition: 0.1s;
+}
+
+button[aria-label="Shuffle"]:hover {
+    border-color: var(--accent) !important;
+}
+
+button[aria-label="Action menu"] {
+    border-radius: 0px !important;
+    background: var(--bg-panel) !important;
+    border: 2px solid var(--border-color);
+    transition: 0.1s;
+}
+
+button[aria-label="Action menu"]:hover {
+    border-color: var(--accent) !important;
+}
+
+/* suscribe channel button*/
+.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextOutline.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextEnableBackdropFilterExperiment {
+    border-radius: 0px !important;
+    background: var(--bg-panel) !important;
+    border: 2px solid var(--border-color) !important;
+    transition: 0.1s !important;
+}
+
+/* delete gradient */
+.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextOutline.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextEnableBackdropFilterExperiment:hover {
+    border-color: var(--accent) !important;
+}
+
+.gradient-container.style-scope.ytmusic-immersive-header-renderer {
+    background: none !important;
+}
+
+.dropdown-content {
+    border-radius: 0px !important;
+    background: var(--bg-dark) !important;
 }
