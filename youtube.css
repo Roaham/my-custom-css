@@ -413,7 +413,7 @@ input.ytSearchboxComponentInput {
 /* Player container frame */
 #player-container-outer.style-scope.ytd-watch-flexy {
     border-radius: 0px !important;
-    border: 1px solid var(--border-color) !important;
+    border: 2px solid var(--border-color) !important;
     transition: border 0.1s;
     background-color: var(--bg-dark) !important;
     overflow: hidden;
@@ -493,6 +493,10 @@ input.ytSearchboxComponentInput {
     border-color: var(--accent) !important;
     transform: translate(-5px, 5px) !important;
     box-shadow: 4px -4px 0px 0px var(--accent) !important;
+}
+
+.contribYtLightShapeHost {
+    display: none !important;
 }
 
 /* Hide the built-in Lottie animation on the subscribe button */
@@ -624,7 +628,6 @@ yt-lockup-view-model.ytd-item-section-renderer.lockup.ytLockupViewModelWrapper:h
     height: 20px !important;
     min-width: 20px !important;
     padding: 0 !important;
-    translate: -30px 0;
     background-color: var(--bg-panel) !important;
     border: 1px solid transparent !important;
     border-radius: 0px !important;
@@ -639,6 +642,20 @@ yt-lockup-view-model.ytd-item-section-renderer.lockup.ytLockupViewModelWrapper:h
 .ytSpecButtonShapeNextHost.ytSpecButtonShapeNextText.ytSpecButtonShapeNextMono.ytSpecButtonShapeNextSizeM.ytSpecButtonShapeNextIconButton.ytSpecButtonShapeNextEnableBackdropFilterExperiment:hover {
     border-color: var(--accent) !important;
 }
+
+yt-contextual-sheet-layout, yt-sheet-view-model {
+    border-radius: 0px !important;
+    background-color: var(--bg-panel) !important;
+    border: 1px solid var(--accent);
+}
+
+[role="presentation"] .ytListItemViewModelLayoutWrapper:hover,
+.ytListItemViewModelLayoutWrapper:hover {
+  background-color: var(--bg-surface) !important;
+}
+
+
+
 
 
 
@@ -697,6 +714,7 @@ ytd-multi-page-menu-renderer {
     border: 2px solid var(--border-color) !important;
     transition: border-color 0.3s ease !important;
     overflow: hidden !important;
+    border-radius: 0px !important;
 }
 
 ytd-multi-page-menu-renderer:hover {
@@ -903,12 +921,36 @@ h2.ytd-item-section-header-renderer::after {
     line-height: 1.4 !important;
     margin-top: 12px !important;
     border-radius: 0px;
-    border: 1px solid var(--border-color) !important;
+    border: 2px solid var(--border-color) !important;
     transition: 0.2s;
+    margin: 8px;
+    padding: 8px;
+}
+
+yt-thumbnail-view-model {
+    border-radius: 0px !important;
 }
 
 .yt-horizontal-list-renderer.lockup.ytLockupViewModelWrapper:hover {
-    border: 1px solid var(--accent) !important;
+    border: 2px solid var(--accent) !important;
+}
+
+ytd-item-section-renderer {
+    border-top: none !important;
+    border-bottom: none !important;
+    background: none !important;
+    margin-bottom: 0 !important;
+}
+
+/* Playlist page */
+#items.ytd-grid-renderer>.lockup.ytd-grid-renderer {
+    border: 2px solid var(--border-color) !important;
+    padding: 8px;
+    transition: 0.1s;
+}
+
+#items.ytd-grid-renderer>.lockup.ytd-grid-renderer:hover {
+    border:2px solid var(--accent) !important;
 }
 
 .ytSearchboxComponentSuggestionsContainer.ytSearchboxComponentSuggestionsContainerScrollable {
@@ -956,7 +998,6 @@ ytd-guide-section-renderer:has(a[href="/premium"]) {
 
 .blurred-image.style-scope.ytd-playlist-header-renderer.no-transition {
     display: none;
-    
 }
 
 ytd-button-renderer.play-button.style-scope.ytd-playlist-header-renderer a.ytSpecButtonShapeNextHost {
@@ -1032,3 +1073,147 @@ yt-live-chat-header-renderer, yt-live-chat-text-message-renderer, yt-live-chat-m
 .style-scope.yt-live-chat-message-input-renderer {
     border-radius: 0px !important;
 }
+
+/* Buttons */
+.ytSpecButtonViewModelHost.style-scope.ytd-rich-shelf-renderer {
+    background: var(--bg-main) !important;
+}
+
+
+#menu-container .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextOutline"],
+#rich-shelf-header .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextOutline"] {
+    border-radius: 0 !important;
+    border: 2px solid var(--border-color) !important;
+    transition: border-color 0.1s ease;
+    background: var(--bg-main) !important;
+}
+
+#menu-container .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextOutline"]:hover,
+#rich-shelf-header .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextOutline"]:hover {
+    border-color: var(--accent) !important;
+    background: var(--bg-surface) !important;
+}
+
+yt-flexible-actions-view-model.ytFlexibleActionsViewModelHost {
+    gap: 8px;
+}
+
+/* Estilo base del botón con el efecto de borde animado */
+yt-flexible-actions-view-model.ytFlexibleActionsViewModelHost .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextTonal"] {
+    position: relative !important;
+    background: var(--bg-main) !important;
+    border-radius: 0px !important;
+    border: 2px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    transition: color 0.25s ease 0.08s, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow: hidden !important;
+}
+
+yt-flexible-actions-view-model.ytFlexibleActionsViewModelHost .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextTonal"]::before,
+yt-flexible-actions-view-model.ytFlexibleActionsViewModelHost .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextTonal"]::after {
+    border: 2px solid var(--border-color);
+    box-sizing: border-box;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 0;
+    right: 0;
+}
+
+yt-flexible-actions-view-model.ytFlexibleActionsViewModelHost .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextTonal"]::before {
+    border-top-width: 2px;
+    border-left-width: 2px;
+}
+
+yt-flexible-actions-view-model.ytFlexibleActionsViewModelHost .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextTonal"]::after {
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+}
+
+yt-flexible-actions-view-model.ytFlexibleActionsViewModelHost .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextTonal"]:hover {
+    color: var(--accent) !important;
+}
+
+yt-flexible-actions-view-model.ytFlexibleActionsViewModelHost .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextTonal"]:hover::before,
+yt-flexible-actions-view-model.ytFlexibleActionsViewModelHost .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextTonal"]:hover::after {
+    border-color: var(--accent) !important;
+    transition: border-color 0s, width 0.25s, height 0.25s;
+    width: 100%;
+    height: 100%;
+}
+
+yt-flexible-actions-view-model.ytFlexibleActionsViewModelHost .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextTonal"]:hover::before {
+    transition-delay: 0s, 0s, 0.25s;
+}
+
+yt-flexible-actions-view-model.ytFlexibleActionsViewModelHost .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextTonal"]:hover::after {
+    transition-delay: 0s, 0.25s, 0s;
+}
+
+yt-flexible-actions-view-model.ytFlexibleActionsViewModelHost .ytSpecButtonShapeNextHost[class*="ytSpecButtonShapeNextTonal"]:active {
+    transform: translateY(0) scale(0.98) !important;
+}
+
+.ytBadgeShapeHost.ytBadgeShapeThumbnailSpecial.ytBadgeShapeThumbnailBadge.ytBadgeShapeModern.ytBadgeShapeTypography {
+    background: var(--accent);
+}
+
+/* Youtube survey */
+div#dismissible.style-scope.ytd-inline-survey-renderer {
+    border-radius: 0px !important;
+    background: var(--bg-dark) !important;
+    border: 2px solid var(--border-color) !important;
+    transition: 0.1s;
+}
+
+div#dismissible.style-scope.ytd-inline-survey-renderer:hover {
+    border-color: var(--accent) !important;
+}
+
+/* search videos */
+ytd-video-renderer.style-scope.ytd-item-section-renderer {
+    background: var(--bg-panel) !important;
+    margin-bottom: 10px;
+    border: 2px solid var(--border-color) !important;
+    transition: 0.1s;
+    border-radius: 0px !important;
+    padding: 10px;
+}
+
+ytd-video-renderer.style-scope.ytd-item-section-renderer:hover {
+    border-color: var(--accent) !important;
+    transform: scale(1.01);
+}
+
+/* TODO: repair double video grid & make it optional
+    ytd-search ytd-two-column-search-results-renderer {
+        max-width: none !important;
+        width: 100% !important;
+    }
+
+    ytd-search #primary.ytd-two-column-search-results-renderer {
+        max-width: none !important;
+        width: 100% !important;
+        flex: 1 !important;
+    }
+
+    ytd-search ytd-item-section-renderer #contents {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 40px !important;
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    ytd-search ytd-item-section-renderer #contents > ytd-video-renderer {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+    }
+
+    ytd-two-column-search-results-renderer.style-scope.ytd-search {
+        margin: 0 !important;
+    }
+*/
